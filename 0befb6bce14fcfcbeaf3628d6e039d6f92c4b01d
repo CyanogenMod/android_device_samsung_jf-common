@@ -1,0 +1,8 @@
+Change-Id: I0befb6bce14fcfcbeaf3628d6e039d6f92c4b01d
+Code-Review+2: Steve Kondik <shade@chemlab.org>
+Verified+1: Steve Kondik <shade@chemlab.org>
+Submitted-by: Steve Kondik <shade@chemlab.org>
+Submitted-at: Sat, 04 May 2013 03:28:48 -0700
+Reviewed-on: http://review.cyanogenmod.org/36856
+Project: CyanogenMod/android_device_samsung_jf-common
+Branch: refs/heads/cm-10.1
