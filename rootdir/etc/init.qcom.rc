@@ -289,7 +289,7 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-    chown root radio /sys/module/rmnet_usb/parameters/dump_ctrl_msg
+    #chown root radio /sys/module/rmnet_usb/parameters/dump_ctrl_msg
 
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
