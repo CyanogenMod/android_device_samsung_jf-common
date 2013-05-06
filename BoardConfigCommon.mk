@@ -30,6 +30,9 @@ USE_CAMERA_STUB := true
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/jf-common/include
 
+# Enable QCOM_BSP extensions
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP -DQCOM_BSP_WITH_GENLOCK
+
 # Kernel
 TARGET_KERNEL_SOURCE        := kernel/samsung/jf
 BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom user_debug=31 zcache
