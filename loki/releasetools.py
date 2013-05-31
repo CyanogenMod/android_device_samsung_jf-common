@@ -28,4 +28,5 @@ def FullOTA_InstallEnd(info):
   info.script.AppendExtra('package_extract_file("boot.img", "/tmp/boot.img");')
   info.script.AppendExtra('assert(run_program("/system/bin/loki.sh") == 0);')
   info.script.AppendExtra('delete("/system/bin/loki.sh");')
-  info.script.AppendExtra('delete("/system/etc/valid_bootloaders");')
+  info.script.AppendExtra('delete("/system/etc/loki_bootloaders");')
+  info.script.AppendExtra('delete("/system/etc/unlocked_bootloaders");')
