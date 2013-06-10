@@ -21,7 +21,7 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../jflte$DEVICE/device-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   DIR=`dirname $FILE`
   if [ ! -d $BASE/$DIR ]; then
