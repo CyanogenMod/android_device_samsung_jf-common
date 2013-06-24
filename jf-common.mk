@@ -108,6 +108,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Lights
 PRODUCT_PACKAGES += lights.msm8960
 
+# Irda
+PRODUCT_PACKAGES += irda.msm8960
+
 # Increase the HWUI font cache since we have tons of RAM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_cache_width=2048
