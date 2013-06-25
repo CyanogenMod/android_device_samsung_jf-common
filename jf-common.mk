@@ -45,7 +45,11 @@ PRODUCT_PACKAGES += \
     gps.msm8960
 
 PRODUCT_COPY_FILES += \
+ifeq ($(PRODUCT_DEVICE), jfltevzw)
+    device/samsung/jf-common/gps/gps-jfltevzw.conf:system/etc/gps.conf
+else
     device/samsung/jf-common/gps/gps.conf:system/etc/gps.conf
+endif
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
