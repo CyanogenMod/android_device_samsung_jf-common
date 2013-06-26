@@ -68,6 +68,9 @@ BOARD_NFC_HAL_SUFFIX := msm8960
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
 
+# We use new-style protected buffer allocations
+TARGET_USES_SECURE_MM_HEAP := true
+
 # Use seperate speakerphone device
 BOARD_USES_SEPERATED_VOICE_SPEAKER := true
 
