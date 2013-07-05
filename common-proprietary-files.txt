@@ -172,6 +172,7 @@ lib/libvdis.so
 
 
 # Wi-Fi
+bin/macloader
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_apsta.bin_a0
 etc/wifi/bcmdhd_mfg.bin
