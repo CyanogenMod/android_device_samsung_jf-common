@@ -24,4 +24,7 @@
     <bool name="enableZSL">true</bool>
     <!-- Magic for enabling ZSL on Samsung cameras -->
     <bool name="sendMagicSamsungZSLCommand">true</bool>
+    <!-- force Software HDR if hardware HDR is enabled  -->
+    <bool name="forceSoftwareHDR">true</bool>
+
 </resources>
