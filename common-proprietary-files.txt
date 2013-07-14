@@ -1,6 +1,7 @@
 # Bins
 bin/mpdecision
 #bin/prepare_param.sh
+bin/rtcc_init
 
 # Thermal
 bin/thermald
