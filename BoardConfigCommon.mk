@@ -89,3 +89,6 @@ BOARD_USES_SEPERATED_VOIP := true
 # Use seperate devices for 3-pole headset
 BOARD_USES_SEPERATED_HEADSET_MIC := true
 
+# Enable tunnel audio
+USE_TUNNEL_AUDIO := true
+
