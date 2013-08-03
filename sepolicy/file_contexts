@@ -88,8 +88,8 @@
 /system/bin/qcks                 u:object_r:kickstart_exec:s0
 /system/etc/kickstart_checker.sh u:object_r:kickstart_exec:s0
 /system/bin/hci_qcomm_init       u:object_r:hci_attach_exec:s0
-/system/etc/init.mako.bt.sh      u:object_r:bluetooth_loader_exec:s0
-/system/bin/bdAddrLoader         u:object_r:bluetooth_loader_exec:s0
+#/system/etc/init.mako.bt.sh      u:object_r:bluetooth_loader_exec:s0
+#/system/bin/bdAddrLoader         u:object_r:bluetooth_loader_exec:s0
 
 # Persist firmware filesystem
 /persist(/.*)?                   u:object_r:persist_file:s0
