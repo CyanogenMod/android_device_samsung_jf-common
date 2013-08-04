@@ -19,4 +19,6 @@
 <resources>
     <!-- Whether or not to enable Samsung HDR capabilities -->
     <bool name="config_useSamsungHDR">true</bool>
+    <!-- Whether or not to enable Samsung ZSL capabilities -->
+    <bool name="config_useSamsungZSL">true</bool>
 </resources>
