@@ -3300,6 +3300,59 @@ SectionDevice
     EC_REF_RXMixerCTL "SLIM_RX"
 EndSection
 
+SectionDevice
+    Name "USB PROXY Rx Speaker"
+    Comment "USB PROXY Rx + Speaker Rx device combo device"
+
+    EnableSequence
+        'SLIM RX1 MUX':0:AIF1_PB
+        'SLIM RX6 MUX':0:AIF2_PB
+        'SLIM RX2 MUX':0:AIF1_PB
+        'SLIM RX7 MUX':0:AIF2_PB
+        'SLIM_0_RX Channels':0:Two
+        'RX3 MIX1 INP1':0:RX1
+        'RX3 MIX1 INP2':0:RX6
+        'RX5 MIX1 INP1':0:RX2
+        'RX5 MIX1 INP2':0:RX7
+        'RX4 DSM MUX':0:DSM_INV
+        'RX6 DSM MUX':0:DSM_INV
+        'LINEOUT1 Volume':1:66
+        'LINEOUT2 Volume':1:66
+        'LINEOUT3 Volume':1:66
+        'LINEOUT4 Volume':1:66
+        'AIF3_CAP Mixer SLIM TX3':1:1
+        'AIF3_CAP Mixer SLIM TX5':1:1
+        'SLIM TX3 MUX':0:RMIX3
+        'SLIM TX5 MUX':0:RMIX5
+    EndSequence
+
+    DisableSequence
+        'SLIM RX1 MUX':0:ZERO
+        'SLIM RX6 MUX':0:ZERO
+        'SLIM RX2 MUX':0:ZERO
+        'SLIM RX7 MUX':0:ZERO
+        'RX3 MIX1 INP1':0:ZERO
+        'RX3 MIX1 INP2':0:ZERO
+        'RX5 MIX1 INP1':0:ZERO
+        'RX5 MIX1 INP2':0:ZERO
+        'RX4 DSM MUX':0:CIC_OUT
+        'RX6 DSM MUX':0:CIC_OUT
+        'LINEOUT1 Volume':1:0
+        'LINEOUT2 Volume':1:0
+        'LINEOUT3 Volume':1:0
+        'LINEOUT4 Volume':1:0
+        'AIF3_CAP Mixer SLIM TX3':1:0
+        'AIF3_CAP Mixer SLIM TX5':1:0
+        'SLIM TX3 MUX':0:ZERO
+        'SLIM TX5 MUX':0:ZERO
+    EndSequence
+
+    ACDBID  22:1
+    EffectsMixerCTL "SRS TruMedia"
+    EC_REF_RXMixerCTL "SLIM_RX"
+
+EndSection
+
 SectionModifier
 	Name "Play Music"
 	Comment "Modifier for music playback"
