@@ -40,6 +40,11 @@ PRODUCT_COPY_FILES += \
     device/samsung/jf-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
+# Wifi
+PRODUCT_COPY_FILES += \
+    device/samsung/jf-common/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/samsung/jf-common/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
 # Media Profile
 PRODUCT_COPY_FILES += \
     device/samsung/jf-common/media/media_profiles.xml:system/etc/media_profiles.xml
