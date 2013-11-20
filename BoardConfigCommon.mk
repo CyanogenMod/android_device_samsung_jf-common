@@ -94,6 +94,9 @@ BOARD_USES_SEPERATED_HEADSET_MIC := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+# Disable adaptive playback
+TARGET_NO_ADAPTIVE_PLAYBACK := true
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
         device/samsung/jf-common/sepolicy
