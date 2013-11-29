@@ -25,7 +25,7 @@ lib/libcsd-client.so
 lib/libExtendedExtractor.so
 lib/libmmparser.so
 lib/libmmosal.so
-lib/libdivxdrm.so
+lib/libDivxDrm.so
 
 # Adreno GPU (Available on Nexus 4)
 vendor/lib/egl/eglsubAndroid.so
@@ -35,15 +35,14 @@ vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libGLESv2S3D_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 
-vendor/lib/libc2d2_a3xx.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-a3xx.so
-vendor/lib/libC2D2.so
-vendor/lib/libOpenVG.so
-vendor/lib/libCB.so
-vendor/lib/libadreno_utils.so
-vendor/lib/libOpenCL.so
 vendor/lib/libsc-a3xx.so
+vendor/lib/libCB.so
+vendor/lib/libc2d30-a3xx.so
+vendor/lib/libOpenCL.so
+vendor/lib/libc2d30.so
+vendor/lib/libadreno_utils.so
+vendor/lib/libsc-a2xx.so
+vendor/lib/libllvm-a3xx.so
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
 etc/firmware/vidc_1080p.fw
@@ -63,8 +62,7 @@ bin/qmuxd
 bin/rild
 bin/rmt_storage
 lib/libatparser.so
-lib/libcordon.so
-lib/libdiag.so
+vendor/lib/libdiag.so
 lib/libdsutils.so
 lib/libdsi_netctrl.so
 lib/libfactoryutil.so
@@ -75,10 +73,10 @@ lib/libqdi.so
 lib/libqdp.so
 lib/libqmi.so
 lib/libqmiservices.so
-lib/libqmi_cci.so
-lib/libqmi_common_so.so
-lib/libqmi_csi.so
-lib/libqmi_encdec.so
+vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_common_so.so
+vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_encdec.so
 lib/libqcci_legacy.so
 lib/libqmi_client_qmux.so
 lib/libreference-ril.so
@@ -89,9 +87,8 @@ lib/libsecril-client.so
 bin/time_daemon
 lib/libtime_genoff.so
 
-
 # GPS
-lib/libgeofence.so
+#lib/libgeofence.so
 lib/libloc_api_v02.so
 
 # Sensors
@@ -169,32 +166,21 @@ lib/libvdis.so
 
 
 # Wi-Fi
-etc/wifi/bcmdhd_apsta.bin
-etc/wifi/bcmdhd_apsta.bin_a0
-etc/wifi/bcmdhd_mfg.bin
-etc/wifi/bcmdhd_mfg.bin_a0
+etc/wifi/WCNSS_qcom_cfg.ini
+etc/wifi/wpa_supplicant_overlay.conf
+etc/wifi/nvram_mfg.txt
+etc/wifi/wpa_supplicant.conf
 etc/wifi/bcmdhd_sta.bin
+etc/wifi/bcmdhd_ibss.bin
+etc/wifi/bcmdhd_mfg.bin_a0
+etc/wifi/bcmdhd_apsta.bin_a0
+etc/wifi/p2p_supplicant_overlay.conf
+etc/wifi/nvram_net.txt
+etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_sta.bin_a0
 etc/wifi/cred.conf
-etc/wifi/nvram_mfg.txt
-etc/wifi/nvram_mfg.txt_a0
-etc/wifi/nvram_mfg.txt:etc/wifi/nvram_mfg.txt_murata
-etc/wifi/nvram_mfg.txt_murata_a0
-etc/wifi/nvram_mfg.txt_muratafem1
-etc/wifi/nvram_mfg.txt_muratafem2
-etc/wifi/nvram_mfg.txt_semco3rd
-etc/wifi/nvram_mfg.txt_semco3rd_a0
-etc/wifi/nvram_mfg.txt_semcosh
-etc/wifi/nvram_net.txt
-etc/wifi/nvram_net.txt_a0
-etc/wifi/nvram_net.txt:etc/wifi/nvram_net.txt_murata
-etc/wifi/nvram_net.txt_murata_a0
-etc/wifi/nvram_net.txt_muratafem1
-etc/wifi/nvram_net.txt_muratafem2
-etc/wifi/nvram_net.txt_semco3rd
-etc/wifi/nvram_net.txt_semco3rd_a0
-etc/wifi/nvram_net.txt_semcosh
-etc/wifi/wpa_supplicant.conf
+etc/wifi/bcmdhd_mfg.bin
+
 
 # Perf
 lib/libqc-opt.so
@@ -207,5 +193,5 @@ lib/libdrmfs.so
 lib/libdrmtime.so
 lib/libhdcp2.so
 lib/libQSEEComAPI.so
-lib/libWVStreamControlAPI_L1.so
+vendor/lib/libWVStreamControlAPI_L1.so
 lib/libwvm.so
