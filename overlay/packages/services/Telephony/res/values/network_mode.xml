@@ -17,19 +17,33 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Mobile network settings, network mode choices for a device supporting CDMA and LTE [CHAR LIMIT=25] -->
     <string-array name="preferred_network_mode_choices">
-        <item>LTE/CDMA/EvDo/GSM/WCDMA</item>
-        <item>LTE/GSM/WCDMA</item>
-        <item>LTE/CDMA/EvDo</item>
-        <item>CDMA/EvDo auto</item>
-        <item>GSM/WCDMA auto</item>
-        <item>GSM/WCDMA preferred</item>
+   	<item>LTE/WCDMA</item>
+	<item>LTE</item>
+	<item>Global</item>
+	<item>GSM/WCDMA/LTE</item>
+	<item>CDMA+LTE/EvDo</item>
+	<item>CDMA/EvDo/GSM/WCDMA</item>
+	<item>EvDo Only</item>
+	<item>WCDMA without EvDo</item>
+	<item>CDMA/EvDo Auto</item>
+	<item>GSM/WCDMA Auto</item>
+	<item>WCDMA Only</item>
+	<item>GSM Only</item>
+	<item>GSM/WCDMA Preferred</item>
     </string-array>
     <string-array name="preferred_network_mode_values" translatable="false">
+        <item>"12"</item>
+        <item>"11"</item>
         <item>"10"</item>
         <item>"9"</item>
         <item>"8"</item>
+        <item>"7"</item>
+        <item>"6"</item>
+        <item>"5"</item>
         <item>"4"</item>
         <item>"3"</item>
+        <item>"2"</item>
+        <item>"1"</item>
         <item>"0"</item>
     </string-array>
 </resources>
