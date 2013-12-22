@@ -1,10 +1,10 @@
-# Bins
+# MPDecision
 bin/mpdecision
-#bin/prepare_param.sh
+lib/libqc-opt.so
 
 # Thermal
-bin/thermald
 bin/thermal-engine
+lib/libthermalclient.so
 
 # Bluetooth firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
@@ -25,21 +25,21 @@ lib/libcsd-client.so
 lib/libExtendedExtractor.so
 lib/libmmparser.so
 lib/libmmosal.so
-lib/libdivxdrm.so
 
-# Adreno GPU (Available on Nexus 4)
-lib/libadreno_utils.so
+# Postprocessing
+bin/mm-pp-daemon
+lib/libmm-abl.so
+lib/libmm-abl-oem.so
 
+# Adreno GPU
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libGLESv2S3D_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
-
 vendor/lib/libC2D2.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/libOpenCL.so
 vendor/lib/libOpenVG.so
 vendor/lib/libadreno_utils.so
@@ -47,32 +47,32 @@ vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30.so
 vendor/lib/libgsl.so
 vendor/lib/libllvm-a3xx.so
-vendor/lib/libqc-opt.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsc-a3xx.so
-vendor/lib/libwvm.so
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
+
+# Video firmware
 etc/firmware/vidc_1080p.fw
 
 # Graphics
 lib/libmm-color-convertor.so
+lib/libI420colorconvert.so
 
-# Radio
+# Radio / network
 bin/ds_fmc_appd
 bin/efsks
 bin/ks
 bin/netmgrd
-bin/sec-ril
 bin/qcks
 bin/qmiproxy
 bin/qmuxd
+bin/radish
 bin/rild
 bin/rmt_storage
+bin/sec-ril
 lib/libatparser.so
-lib/libcordon.so
-lib/libdiag.so
 lib/libdsutils.so
 lib/libdsi_netctrl.so
 lib/libfactoryutil.so
@@ -83,15 +83,16 @@ lib/libqdi.so
 lib/libqdp.so
 lib/libqmi.so
 lib/libqmiservices.so
-lib/libqmi_cci.so
-lib/libqmi_common_so.so
-lib/libqmi_csi.so
-lib/libqmi_encdec.so
 lib/libqcci_legacy.so
 lib/libqmi_client_qmux.so
 lib/libreference-ril.so
 lib/libril-qcril-hook-oem.so
 lib/libsecril-client.so
+vendor/lib/libdiag.so
+vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_common_so.so
+vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_encdec.so
 
 # Time services
 bin/time_daemon
@@ -99,7 +100,6 @@ lib/libtime_genoff.so
 
 
 # GPS
-lib/libgeofence.so
 lib/libloc_api_v02.so
 
 # Sensors
@@ -117,7 +117,7 @@ cameradata/RS_M10MO_SL.bin
 cameradata/RS_M10MO_SS.bin
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
-lib/hw/vendor-camera.msm8960.so:lib/hw/camera.msm8960.so
+lib/hw/camera.msm8960.so:lib/hw/camera.vendor.msm8960.so
 lib/libadsprpc.so
 lib/libchromatix_imx074_default_video.so
 lib/libchromatix_imx074_preview.so
@@ -176,45 +176,38 @@ lib/liboemcamera.so
 lib/libsecnativefeature.so
 lib/libvdis.so
 
-
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_apsta.bin_a0
+etc/wifi/bcmdhd_ibss.bin
 etc/wifi/bcmdhd_mfg.bin
 etc/wifi/bcmdhd_mfg.bin_a0
 etc/wifi/bcmdhd_sta.bin
 etc/wifi/bcmdhd_sta.bin_a0
 etc/wifi/cred.conf
 etc/wifi/nvram_mfg.txt
-etc/wifi/nvram_mfg.txt_a0
-etc/wifi/nvram_mfg.txt:etc/wifi/nvram_mfg.txt_murata
-etc/wifi/nvram_mfg.txt_murata_a0
-etc/wifi/nvram_mfg.txt_muratafem1
-etc/wifi/nvram_mfg.txt_muratafem2
-etc/wifi/nvram_mfg.txt_semco3rd
-etc/wifi/nvram_mfg.txt_semco3rd_a0
-etc/wifi/nvram_mfg.txt_semcosh
 etc/wifi/nvram_net.txt
-etc/wifi/nvram_net.txt_a0
-etc/wifi/nvram_net.txt:etc/wifi/nvram_net.txt_murata
-etc/wifi/nvram_net.txt_murata_a0
-etc/wifi/nvram_net.txt_muratafem1
-etc/wifi/nvram_net.txt_muratafem2
-etc/wifi/nvram_net.txt_semco3rd
-etc/wifi/nvram_net.txt_semco3rd_a0
-etc/wifi/nvram_net.txt_semcosh
-etc/wifi/wpa_supplicant.conf
-
-# Perf
-lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
-#bin/scranton_RD
 lib/libdrmdecrypt.so
 lib/libdrmfs.so
 lib/libdrmtime.so
-lib/libhdcp2.so
 lib/libQSEEComAPI.so
-lib/libWVStreamControlAPI_L1.so
+
+# HDCP
+bin/insthk
+etc/srm.bin
+lib/libhdcp2.so
+lib/libstagefright_hdcp.so
+
+# Widevine
+lib/drm/libdrmwvmplugin.so
 lib/libwvm.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/mediadrm/libwvdrmengine.so
+
+# IPC router security
+bin/irsc_util
+etc/sec_config
