@@ -49,6 +49,9 @@ on boot
     write /sys/devices/i2c-3/3-005b/update_fw 1
     start qcamerasvr
 
+    # enable pulsing led on boot
+    write /sys/class/sec/led/led_pattern 6
+
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     symlink /data/tombstones /tombstones
@@ -422,6 +425,11 @@ service time_daemon /system/bin/time_daemon
    class late_start
    user root
    group root
+
+# boot completed
+on property:dev.bootcomplete=1
+    # disable pulsing led on boot complete
+    write /sys/class/sec/led/led_pattern 0
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B \
