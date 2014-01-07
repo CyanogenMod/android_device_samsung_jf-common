@@ -1,5 +1,10 @@
-OUTDIR=vendor/$VENDOR/$DEVICE
-MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
+# Fall-through so variable is not required, but usable
+if [ -z "$DEVICE_UNIFIED" ]; then
+  DEVICE_UNIFIED=$DEVICE
+fi
+
+OUTDIR=vendor/$VENDOR/$DEVICE_UNIFIED
+MAKEFILE=../../../$OUTDIR/$DEVICE_UNIFIED-vendor-blobs.mk
 
 (cat << EOF) > $MAKEFILE
 # Copyright (C) 2011 The CyanogenMod Project
@@ -59,7 +64,7 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/proprietary-files.txt`; do
   echo "        $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
 done
 
-(cat << EOF) > ../../../$OUTDIR/$DEVICE-vendor.mk
+(cat << EOF) > ../../../$OUTDIR/$DEVICE_UNIFIED-vendor.mk
 # Copyright (C) 2011 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,7 +83,7 @@ done
 
 # Pick up overlay for features that depend on non-open-source files
 
-\$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
+\$(call inherit-product, vendor/$VENDOR/$DEVICE_UNIFIED/$DEVICE_UNIFIED-vendor-blobs.mk)
 EOF
 
 (cat << EOF) > ../../../$OUTDIR/BoardConfigVendor.mk
