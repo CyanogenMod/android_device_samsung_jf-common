@@ -54,5 +54,38 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
   fi
 done
 
+if [[ `cat /proc/cmdline` == *SCH-I545* ]]; then
+  BASE=../../../vendor/$VENDOR/$DEVICE/proprietary/blobs/vzw
+
+  for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
+    echo "Extracting /system/$FILE ..."
+    OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
+    FILE=${PARSING_ARRAY[0]}
+    DEST=${PARSING_ARRAY[1]}
+    if [ -z $DEST ]
+    then
+      DEST=$FILE
+    fi
+    DIR=`dirname $FILE`
+    if [ ! -d $BASE/$DIR ]; then
+      mkdir -p $BASE/$DIR
+    fi
+    if [ "$SRC" = "adb" ]; then
+      adb pull /system/$FILE $BASE/$DEST
+    # if file dot not exist try destination
+      if [ "$?" != "0" ]
+          then
+          adb pull /system/$DEST $BASE/$DEST
+      fi
+    else
+      cp $SRC/system/$FILE $BASE/$DEST
+      # if file dot not exist try destination
+      if [ "$?" != "0" ]
+          then
+          cp $SRC/system/$DEST $BASE/$DEST
+      fi
+    fi
+  done
+fi
 
 ./setup-makefiles.sh
