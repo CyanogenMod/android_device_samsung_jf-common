@@ -33,3 +33,6 @@ PRODUCT_DEVICE := jflte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := GT-I9505
+
+PRODUCT_COPY_FILES += \
+    device/samsung/jflte/variant.sh:system/bin/variant.sh \
