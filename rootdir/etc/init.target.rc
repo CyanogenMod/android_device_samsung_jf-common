@@ -30,7 +30,7 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /firmware-mdm 0771 system system
     symlink /data/tombstones /tombstones
-    mkdir efs 0771 system system
+    mkdir /efs 0771 system radio
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
