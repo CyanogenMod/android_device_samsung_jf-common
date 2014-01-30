@@ -27,6 +27,8 @@
 #
 #
 on early-init
+    loglevel 8
+
     mkdir /firmware 0771 system system
     mkdir /firmware-mdm 0771 system system
     symlink /data/tombstones /tombstones
