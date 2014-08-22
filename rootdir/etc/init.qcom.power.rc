@@ -116,6 +116,7 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
+    write /sys/module/cpu_boost/parameters/load_based_syncs 1
 
     write /dev/cpuctl/cpu.notify_on_migrate 1
 
