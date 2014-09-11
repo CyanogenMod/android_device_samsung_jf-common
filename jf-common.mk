@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2011 The CyanogenMod Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,11 +16,44 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-## (2) Also get non-open-source specific aspects if available
+# Get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/jf-common/jf-common-vendor.mk)
 
-## overlays
+# Overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+
+# System Properties
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
@@ -30,33 +63,58 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio_policy.msm8960 \
+    audio.primary.msm8960 \
+    audio.r_submix.default \
+    audio.usb.default \
+    libaudio-resampler
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    device/samsung/jf-common/audio/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
     device/samsung/jf-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
+    device/samsung/jf-common/audio/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
 
-# Wifi
+# Bluetooth
 PRODUCT_COPY_FILES += \
-    device/samsung/jf-common/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/samsung/jf-common/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    device/samsung/jf-common/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
 
-# Media Profile
-PRODUCT_COPY_FILES += \
-    device/samsung/jf-common/media/media_profiles.xml:system/etc/media_profiles.xml
+# Camera Wrapper
+PRODUCT_PACKAGES += \
+    camera.msm8960
+
+# CRDA
+PRODUCT_PACKAGES += \
+    crda \
+    linville.key.pub.pem \
+    regdbdump \
+    regulatory.bin
+
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8960 \
+    gralloc.msm8960 \
+    hwcomposer.msm8960 \
+    libgenlock \
+    memtrack.msm8960
 
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8960
 
-ifeq ($(NEEDS_GPS_MSB_DISABLED),true)
-    GPS_CONF := device/samsung/jf-common/gps/gps-nomsb.conf
-else
-    GPS_CONF := device/samsung/jf-common/gps/gps.conf
-endif
-
 PRODUCT_COPY_FILES += \
-    $(GPS_CONF):/system/etc/gps.conf
+    device/samsung/jf-common/gps/etc/gps.conf:/system/etc/gps.conf \
+    device/samsung/jf-common/gps/etc/sap.conf:/system/etc/sap.conf
+
+# IR
+PRODUCT_PACKAGES += \
+    consumerir.msm8960
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -68,26 +126,21 @@ PRODUCT_COPY_FILES += \
     device/samsung/jf-common/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
     device/samsung/jf-common/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
 
-# Ramdisk
+# Lights
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.carrier.rc \
-    init.crda.sh \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    init.target.rc \
-    ueventd.qcom.rc
+    lights.msm8960
 
-# Torch
-PRODUCT_PACKAGES += Torch
-
-# Wifi
+# Loki
 PRODUCT_PACKAGES += \
-    libnetcmdiface \
-    macloader \
-    crda \
-    regulatory.bin \
-    linville.key.pub.pem
+    loki_tool \
+    loki.sh \
+    loki_bootloaders \
+    recovery-transform.sh
+
+# Media Profile
+PRODUCT_COPY_FILES += \
+    device/samsung/jf-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    device/samsung/jf-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -98,85 +151,101 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# IR packages
+PRODUCT_COPY_FILES += \
+    device/samsung/jf-common/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/samsung/jf-common/configs/nfcee_access.xml:system/etc/nfcee_access.xml
+
+# OMX
 PRODUCT_PACKAGES += \
-    consumerir.msm8960
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
+    libdashplayer \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libstagefrighthw
 
-# NFCEE access control + configuration
-NFCEE_ACCESS_PATH := device/samsung/jf-common/nfc/nfcee_access.xml
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
-    device/samsung/jf-common/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
-
-# Sensors
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-# Lights
-PRODUCT_PACKAGES += lights.msm8960
-
-# QC Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8960
 
 # QRNGD
-PRODUCT_PACKAGES += qrngd
+PRODUCT_PACKAGES += \
+    qrngd
 
-# Prepatch to fix BT/WiFi bus lockups
-PRODUCT_COPY_FILES += device/samsung/jf-common/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.carrier.rc \
+    init.crda.sh \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.target.rc \
+    ueventd.qcom.rc
 
-# enable repeatable keys in cwm
+# Thermal
+PRODUCT_COPY_FILES += \
+    device/samsung/jf-common/configs/thermald.conf:system/etc/thermald.conf \
+    device/samsung/jf-common/configs/thermal-engine.conf:system/etc/thermal-engine.conf
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+# Wifi
+PRODUCT_PACKAGES += \
+    libnetcmdiface \
+    macloader
+
+PRODUCT_COPY_FILES += \
+    device/samsung/jf-common/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/samsung/jf-common/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
+# audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.enable_key_repeat=true \
-    ro.cwm.repeatable_keys=114,115
-
-#common build.props
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    ro.chipname=apq8064 \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    persist.radio.add_power_save=1 \
-    persist.radio.snapshot_disabled=1 \
-    persist.radio.use_se_table_only=1 \
-    persist.radio.fill_eons=1 \
-    com.qc.hardware=true \
-    persist.radio.apm_sim_not_pwdn=1 \
-    ro.telephony.call_ring.multiple=0 \
-    ro.sf.lcd_density=480 \
-    ro.ril.transmitpower=true \
-    ro.opengles.version=196608 \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
     persist.audio.speaker.location=high \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    persist.timed.enable=true \
-    persist.fuse_sdcard=true \
-    ro.emmc.sdcard.partition=17 \
-    ro.use_data_netmgrd=true \
+    ro.qc.sdk.audio.fluencetype=fluence
+
+# display
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.text_cache_width=2048 \
+    ro.opengles.version=196608 \
+    ro.sf.lcd_density=480
+
+# radio
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.ds_fmc_app.mode=0 \
-    persist.ims.regmanager.mode=0 \
-    ro.config.ehrpd=true \
-    persist.omh.enabled=1 \
     persist.data_netmgrd_nint=16 \
+    persist.omh.enabled=1 \
+    persist.radio.add_power_save=1 \
+    persist.radio.apm_sim_not_pwdn=1 \
+    persist.radio.fill_eons=1 \
+    persist.radio.use_se_table_only=1 \
+    rild.libpath=/system/lib/libsec-ril.so \
+    ro.telephony.ril.v3=newDriverCallU,newDialCode
+
+# gps
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.gps.agps_provider=1 \
+    ro.qc.sdk.izat.premium_enabled=0 \
+    ro.qc.sdk.izat.service_mask=0x0 \
+    persist.gps.qc_nlp_in_use=0
+
+# media
+PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=true \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so \
-    ril.subscription.types=NV,RUIM \
-    ro.cdma.subscribe_on_ruim_ready=true \
-    persist.radio.no_wait_for_card=0 \
-    keyguard.no_require_sim=true \
-    media.aac_51_output_enabled=true \
-    mm.enable.smoothstreaming=true \
+    mm.enable.smoothstreaming=true
+
+# nitz
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_plmn="" \
     persist.rild.nitz_long_ons_0="" \
     persist.rild.nitz_long_ons_1="" \
@@ -185,15 +254,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_0="" \
     persist.rild.nitz_short_ons_1="" \
     persist.rild.nitz_short_ons_2="" \
-    persist.rild.nitz_short_ons_3="" \
-    ro.telephony.ril.v3=newDriverCall \
-    dalvik.vm.dexopt-data-only=0
+    persist.rild.nitz_short_ons_3=""
 
-# call common msm8960
-$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
+# qualcomm
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.timed.enable=true \
+    ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 
-# call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+# recovery
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true \
+    ro.cwm.repeatable_keys=114,115
 
-# call hwui memory config
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+# ril
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=SamsungQualcommRIL
+
+# wifi
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0
+
+# Common Qualcomm
+$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
