@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 
 if [ $# -eq 0 ]; then
   SRC=adb
@@ -21,6 +21,7 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
+echo "**Extract device props"
 for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
@@ -30,7 +31,7 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   then
     DEST=$FILE
   fi
-  DIR=`dirname $FILE`
+  DIR=`dirname $DEST`
   if [ ! -d $BASE/$DIR ]; then
     mkdir -p $BASE/$DIR
   fi
@@ -42,15 +43,17 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
         adb pull /system/$DEST $BASE/$DEST
     fi
   else
-    cp $SRC/system/$FILE $BASE/$DEST
-    # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
+    if [ -f $SRC/system/$DEST ]; then
+        echo ":: $DEST"
         cp $SRC/system/$DEST $BASE/$DEST
+    else
+        echo ":: $FILE"
+        cp $SRC/system/$FILE $BASE/$DEST
     fi
   fi
 done
 
+echo "**Extract jf-common props"
 for FILE in `egrep -v '(^#|^$)' ../jf-common/proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
@@ -60,7 +63,7 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/proprietary-files.txt`; do
   then
     DEST=$FILE
   fi
-  DIR=`dirname $FILE`
+  DIR=`dirname $DEST`
   if [ ! -d $BASE/$DIR ]; then
     mkdir -p $BASE/$DIR
   fi
@@ -72,15 +75,17 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/proprietary-files.txt`; do
         adb pull /system/$DEST $BASE/$DEST
     fi
   else
-    cp $SRC/system/$FILE $BASE/$DEST
-    # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
+    if [ -f $SRC/system/$DEST ]; then
+        echo ":: $DEST"
         cp $SRC/system/$DEST $BASE/$DEST
+    else
+        echo ":: $FILE"
+        cp $SRC/system/$FILE $BASE/$DEST
     fi
   fi
 done
 
+echo "**Extract jf-common common props"
 BASE=../../../vendor/$VENDOR/jf-common/proprietary
 rm -rf $BASE/*
 for FILE in `egrep -v '(^#|^$)' ../jf-common/common-proprietary-files.txt`; do
@@ -92,7 +97,7 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/common-proprietary-files.txt`; do
   then
     DEST=$FILE
   fi
-  DIR=`dirname $FILE`
+  DIR=`dirname $DEST`
   if [ ! -d $BASE/$DIR ]; then
     mkdir -p $BASE/$DIR
   fi
@@ -104,11 +109,12 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/common-proprietary-files.txt`; do
         adb pull /system/$DEST $BASE/$DEST
     fi
   else
-    cp $SRC/system/$FILE $BASE/$DEST
-    # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
+    if [ -f $SRC/system/$DEST ]; then
+        echo ":: $DEST"
         cp $SRC/system/$DEST $BASE/$DEST
+    else
+        echo ":: $FILE"
+        cp $SRC/system/$FILE $BASE/$DEST
     fi
   fi
 done
