@@ -6,5 +6,5 @@
   {
     "repository": "android_kernel_samsung_jf",
     "target_path": "kernel/samsung/jf"
-  },
+  }
 ]
