@@ -117,8 +117,6 @@ static char * camera_fixup_getparams(int id, const char * settings)
     return ret;
 }
 
-static bool wasVideo = false;
-
 char * camera_fixup_setparams(struct camera_device * device, const char * settings)
 {
     int id = CAMERA_ID(device);
@@ -149,8 +147,6 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
             params.set(android::CameraParameters::KEY_ISO_MODE, "800");
         else if(strcmp(isoMode, "ISO1600") == 0)
             params.set(android::CameraParameters::KEY_ISO_MODE, "1600");
-        else if(strcmp(isoMode, "ISO50") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "50");
     }
 
     if (id != 1) {
@@ -514,7 +510,6 @@ int camera_device_open(const hw_module_t* module, const char* name,
     int cameraid;
     wrapper_camera_device_t* camera_device = NULL;
     camera_device_ops_t* camera_ops = NULL;
-    wasVideo = false;
 
     android::Mutex::Autolock lock(gCameraWrapperLock);
 
