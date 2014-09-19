@@ -2113,7 +2113,7 @@ SectionDevice
         'RX6 DSM MUX':0:DSM_INV
         'LINEOUT2 Volume':1:83
         'LINEOUT4 Volume':1:83
-        'RX5 Digital Volume':2:66.3%
+        'RX5 Digital Volume':2:63.0%
     EndSequence
 
     DisableSequence
