@@ -124,6 +124,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := device/samsung/jf-common/rootdir/etc/fstab.qcom
 
+# External apps on SD
+TARGET_EXTERNAL_APPS = sdcard1
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jf-common/releasetools
 
