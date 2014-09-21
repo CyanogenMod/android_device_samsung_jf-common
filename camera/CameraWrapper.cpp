@@ -104,6 +104,7 @@ static char * camera_fixup_getparams(int id, const char * settings)
     params.unflatten(android::String8(settings));
 
     // fix params here
+    params.set(android::CameraParameters::KEY_ANTI_SHAKE_MODE, "1");
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
     params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "1920x1080");
 
