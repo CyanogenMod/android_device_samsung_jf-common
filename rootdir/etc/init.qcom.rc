@@ -720,12 +720,12 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 65
-    write /sys/devices/system/cpu/cpufreq/conservative/freq_step 5
+    write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 50
+    write /sys/devices/system/cpu/cpufreq/conservative/freq_step 10
     write /sys/devices/system/cpu/cpufreq/conservative/ignore_nice_load 1
     write /sys/devices/system/cpu/cpufreq/conservative/sampling_down_factor 1
-    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate 180000
-    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate_min 180000
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate 160000
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate_min 160000
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
     write /sys/module/msm_thermal/core_control/enabled 1
