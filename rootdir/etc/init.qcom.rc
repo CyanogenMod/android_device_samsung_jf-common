@@ -140,7 +140,7 @@ on post-fs-data
     rm /data/system/wpa_supplicant
 
     # Create directories for perfd
-    mkdir /data/misc/perfd 2770 root system
+    mkdir /data/misc/perfd 2755 root system
     mkdir /data/system/perfd 2770 root system
 
     setprop vold.post_fs_data_done 1
