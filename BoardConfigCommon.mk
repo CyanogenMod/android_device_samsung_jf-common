@@ -41,6 +41,9 @@ BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CONFIG := cyanogen_jf_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/jf
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
 # Audio
 BOARD_HAVE_AUDIENCE_ES325_2MIC := true
 BOARD_HAVE_DOCK_USBAUDIO := true
