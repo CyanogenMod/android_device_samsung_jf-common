@@ -225,7 +225,7 @@
     </integer-array>
 
     <!-- Workaround for devices with broken keyboards -->
-    <bool name="config_forceDisableHardwareKeyboard">true</bool>
+    <!-- <bool name="config_forceDisableHardwareKeyboard">true</bool> -->
 
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
@@ -243,19 +243,19 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">7</integer>
+    <!-- <integer name="config_deviceHardwareKeys">7</integer> -->
 
     <bool name="config_enableWifiDisplay">true</bool>
 
     <!-- Panel auto-brightness configuration value -->
-    <integer name="config_panelAutoBrightnessValue">1</integer>
+    <!-- <integer name="config_panelAutoBrightnessValue">1</integer> -->
 
     <!-- Device supports LED flashlight -->
-    <bool name="config_enableTorch">true</bool>
+    <!-- <bool name="config_enableTorch">true</bool> -->
 
     <!-- Performance profiles -->
-    <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string>
+    <!-- <string name="config_perf_profile_prop">sys.perf.profile</string> -->
+    <!-- <string name="config_perf_profile_default_entry">1</string> -->
 
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
@@ -274,12 +274,12 @@
          Bottom   Top + 400
          Right    Display Width - 100
     -->
-    <integer-array name="config_smartCoverWindowCoords">
+    <!-- <integer-array name="config_smartCoverWindowCoords">
         <item>30</item>
         <item>44</item>
         <item>450</item>
         <item>1036</item>
-    </integer-array>
+    </integer-array> -->
 
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
