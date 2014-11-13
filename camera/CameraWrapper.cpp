@@ -61,7 +61,6 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .author = "The CyanogenMod Project",
          .methods = &camera_module_methods,
          .dso = NULL, /* remove compilation warnings */
-         .reserved = {0}, /* remove compilation warnings */
     },
     .get_number_of_cameras = camera_get_number_of_cameras,
     .get_camera_info = camera_get_camera_info,
@@ -125,8 +124,7 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     int id = CAMERA_ID(device);
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
-    const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
+    const char* camMode = params.get(android::CameraParameters::KEY_SAMSUNG_CAMERA_MODE);
 
     bool enableZSL = !strcmp(params.get(android::CameraParameters::KEY_ZSL), "on");
 

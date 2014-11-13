@@ -87,6 +87,9 @@ TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_INITLOGO := true
 TARGET_QCOM_DISPLAY_VARIANT := caf
 
+# Includes
+# TARGET_SPECIFIC_HEADER_PATH += device/samsung/msm8960-common/include
+
 # GPS
 TARGET_NO_RPC := true
 
