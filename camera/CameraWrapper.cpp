@@ -57,7 +57,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
          .hal_api_version = HARDWARE_HAL_API_VERSION,
          .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "Samsung msm8960 Camera Wrapper",
+         .name = "Samsung jf Camera Wrapper",
          .author = "The CyanogenMod Project",
          .methods = &camera_module_methods,
          .dso = NULL, /* remove compilation warnings */
@@ -67,6 +67,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
     .get_camera_info = camera_get_camera_info,
     .set_callbacks = NULL, /* remove compilation warnings */
     .get_vendor_tag_ops = NULL, /* remove compilation warnings */
+    .open_legacy = NULL, /* remove compilation warnings */
     .reserved = {0}, /* remove compilation warnings */
 };
 
@@ -108,7 +109,6 @@ static char * camera_fixup_getparams(int id, const char * settings)
 
     // fix params here
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
-    params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "1920x1080");
 
     /* Enforce video-snapshot-supported to true */
     params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
@@ -125,12 +125,8 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     int id = CAMERA_ID(device);
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
-    const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
 
-    bool enableZSL = !strcmp(params.get(android::CameraParameters::KEY_ZSL), "on");
-
-    // jactive device camera don't seem to have recording hint param, so read it safely
+    // jactive device camera doesn't seem to have recording hint param, so read it safely
     const char* recordingHint = params.get(android::CameraParameters::KEY_RECORDING_HINT);
     bool isVideo = false;
     if (recordingHint)
@@ -461,8 +457,6 @@ int camera_dump(struct camera_device * device, int fd)
     return VENDOR_CALL(device, dump, fd);
 }
 
-extern "C" void heaptracker_free_leaked_memory(void);
-
 int camera_device_close(hw_device_t* device)
 {
     int ret = 0;
@@ -489,9 +483,6 @@ int camera_device_close(hw_device_t* device)
         free(wrapper_dev->base.ops);
     free(wrapper_dev);
 done:
-#ifdef HEAPTRACKER
-    heaptracker_free_leaked_memory();
-#endif
     return ret;
 }
 
