@@ -23,8 +23,6 @@
 # inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/jf-common/include
-
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
@@ -84,6 +82,9 @@ COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_INITLOGO := true
+
+# Includes
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/jf-common/include
 
 # GPS
 TARGET_NO_RPC := true
