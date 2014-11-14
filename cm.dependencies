@@ -1,5 +1,9 @@
 [
   {
+    "repository": "android_device_qcom_sepolicy",
+    "target_path": "device/qcom/sepolicy"
+  },
+  {
     "repository": "android_device_samsung_qcom-common",
     "target_path": "device/samsung/qcom-common"
   },
