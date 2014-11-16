@@ -132,6 +132,9 @@ TARGET_RECOVERY_FSTAB := device/samsung/jf-common/rootdir/etc/fstab.qcom
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jf-common/releasetools
 
+# RIL
+BOARD_RIL_CLASS := ../../../device/samsung/jf-common/ril
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/samsung/jf-common/sepolicy
