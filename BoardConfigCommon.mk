@@ -129,6 +129,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := device/samsung/jf-common/rootdir/etc/fstab.qcom
 
+# RIL
+BOARD_RIL_CLASS := ../../../device/samsung/jf-common/ril
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/samsung/jf-common/sepolicy
