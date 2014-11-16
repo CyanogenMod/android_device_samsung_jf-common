@@ -274,7 +274,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # ril
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungQualcommRIL
+    ro.telephony.ril_class=jflteRIL
 
 # wifi
 PRODUCT_PROPERTY_OVERRIDES += \
