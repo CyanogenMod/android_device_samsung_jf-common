@@ -84,6 +84,9 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_INITLOGO := true
 
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
+
 # GPS
 TARGET_NO_RPC := true
 
