@@ -96,6 +96,9 @@ TARGET_SPECIFIC_HEADER_PATH += device/samsung/jf-common/include
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Logging
+TARGET_USES_LOGD := false
+
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
