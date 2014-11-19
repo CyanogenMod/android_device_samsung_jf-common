@@ -140,27 +140,9 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/jf-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    app.te \
-    bluetooth.te \
-    device.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    hci_init.te \
     healthd.te \
     init.te \
-    init_shell.te \
-    keystore.te \
-    kickstart.te \
-    mediaserver.te \
-    nfc.te \
-    rild.te \
-    surfaceflinger.te \
-    system.te \
-    ueventd.te \
-    wpa.te \
-    wpa_socket.te
+    mm-pp-daemon.te
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true

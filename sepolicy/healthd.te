@@ -1,1 +1,1 @@
-allow healthd rootfs:file entrypoint;
+allow healthd self:capability
