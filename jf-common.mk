@@ -227,7 +227,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.fill_eons=1 \
     persist.radio.use_se_table_only=1 \
-    ro.telephony.ril.v3=newDriverCallU,newDialCode
+    ro.telephony.ril.config=newDriverCallU,newDialCode
 
 # gps
 PRODUCT_PROPERTY_OVERRIDES += \
