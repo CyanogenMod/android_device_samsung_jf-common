@@ -192,8 +192,12 @@ etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
 
 # Widevine
-lib/drm/libdrmwvmplugin.so:vendor/lib/drm/libdrmwvmplugin.so
-lib/libwvdrm_L1.so:vendor/lib/libwvdrm_L1.so
-lib/libwvm.so:vendor/lib/libwvm.so
-lib/libWVStreamControlAPI_L1.so:vendor/lib/libWVStreamControlAPI_L1.so
+lib/drm/libfwdlockengine.so
+lib/liboemcrypto.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
+vendor/lib/libWVphoneAPI.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
