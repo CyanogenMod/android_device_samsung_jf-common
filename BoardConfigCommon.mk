@@ -34,7 +34,7 @@ TARGET_CPU_VARIANT := krait
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -135,33 +135,6 @@ TARGET_RECOVERY_FSTAB := device/samsung/jf-common/rootdir/etc/fstab.qcom
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/jf-common/ril
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/jf-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    app.te \
-    bluetooth.te \
-    device.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    hci_init.te \
-    healthd.te \
-    init.te \
-    init_shell.te \
-    keystore.te \
-    kickstart.te \
-    mediaserver.te \
-    nfc.te \
-    rild.te \
-    surfaceflinger.te \
-    system.te \
-    ueventd.te \
-    wpa.te \
-    wpa_socket.te
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
