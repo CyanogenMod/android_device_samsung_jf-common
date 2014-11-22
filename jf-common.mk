@@ -217,7 +217,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_cache_width=2048 \
     ro.opengles.version=196608 \
-    ro.sf.lcd_density=480
+    ro.sf.lcd_density=400
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
