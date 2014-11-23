@@ -337,14 +337,6 @@ service cnd /system/bin/cnd
     socket cnd stream 660 root radio
     disabled
 
-service rmt_storage /system/bin/rmt_storage
-    class core
-    user root
-    disabled
-
-on property:ro.boot.emmc=true
-    start rmt_storage
-
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class core
     user root
