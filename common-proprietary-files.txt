@@ -161,7 +161,6 @@ bin/ks
 bin/qcks
 bin/qmuxd
 bin/rild
-bin/rmt_storage
 lib/libatparser.so
 lib/libfactoryutil.so
 lib/libomission_avoidance.so
