@@ -1,0 +1,3 @@
+/system/bin/insthk		u:object_r:insthk_exec:s0
+
+/dev/block/mmcblk0(.*)		u:object_r:mmc_block_device:s0

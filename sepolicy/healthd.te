@@ -1,0 +1,2 @@
+allow healthd self:capability2 0x10;
+

@@ -1,0 +1,2 @@
+allow mpdecision socket_device:sock_file { write setattr };
+allow mpdecision system_data_file:file { open append };

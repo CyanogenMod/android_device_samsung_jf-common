@@ -1,0 +1,2 @@
+allow mdm_helper vfat:file { read getattr open };
+allow mdm_helper self:capability setuid;
