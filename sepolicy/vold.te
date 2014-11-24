@@ -1,0 +1,2 @@
+allow vold mmc_block_device:blk_file { ioctl open getattr };
+
