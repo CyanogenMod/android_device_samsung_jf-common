@@ -1,0 +1,3 @@
+/system/bin/qcks		u:object_r:qcks_exec:s0
+/system/bin/qrngd		u:object_r:qrngd_exec:s0
+/system/bin/insthk		u:object_r:insthk_exec:s0
