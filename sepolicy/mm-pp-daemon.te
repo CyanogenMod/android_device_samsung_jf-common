@@ -1,0 +1,2 @@
+allow mm-pp-daemon init:unix_stream_socket { accept listen };
+
