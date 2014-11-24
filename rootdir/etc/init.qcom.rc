@@ -220,6 +220,7 @@ on post-fs-data
     chmod 0664 /data/.ant.info
 
     # for WIFI Version
+    restorecon /data/.wifiver.info
     write /data/.wifiver.info 0
     chown system root /data/.wifiver.info
     chmod 0666 /data/.wifiver.info
@@ -327,7 +328,7 @@ on property:bluetooth.dun.status=stopped
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
 
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot

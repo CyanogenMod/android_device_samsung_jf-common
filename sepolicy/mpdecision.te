@@ -1,0 +1,2 @@
+#FIXME allow mpdecision system_data_file:file { open append };
+allow mpdecision socket_device:sock_file { write create setattr };
