@@ -1,0 +1,13 @@
+/data/.wifiver.info		u:object_r:wifi_data_file:s0
+/data/system/default_values	u:object_r:mpctl_data_file:s0
+
+/dev/bcm2079x			u:object_r:nfc_device:s0
+/dev/block/mmcblk0(.*)		u:object_r:mmc_block_device:s0
+
+/system/bin/insthk		u:object_r:insthk_exec:s0
+
+/sys/class/misc/gammacontrol/tuner						u:object_r:panel_dev:s0
+/sys/devices/platform/battery_current_limit(/.*)?				u:object_r:sysfs_thermal:s0
+/sys/devices/platform/mipi_samsung_full_hd.2305/lcd/panel/power_reduce		u:object_r:panel_dev:s0
+/sys/devices/virtual/sec/sec_touchkey/keypad_enable				u:object_r:keypad_dev:s0
+/sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
