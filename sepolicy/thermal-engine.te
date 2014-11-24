@@ -1,0 +1,4 @@
+allow thermal-engine self:capability { chown net_admin };
+allow thermal-engine self:netlink_kobject_uevent_socket { bind read setopt };
+allow thermal-engine self:process execmem;
+allow thermal-engine sysfs:file rw_file_perms;
