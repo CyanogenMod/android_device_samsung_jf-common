@@ -1,0 +1,4 @@
+allow system_server efs_file:dir search;
+allow system_server efs_file:file r_file_perms;
+allow system_server timerirq_dev:chr_file rw_file_perms;
+allow system_server graphics_device:chr_file rw_file_perms;
