@@ -151,11 +151,6 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     if (id != 1) {
         params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
         params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
-
-        if (!isVideo) {
-            // Magic 1508 command needs to be sent for jf
-            camera_send_command(device, 1508, 0, 0);
-        }
     }
 
     android::String8 strParams = params.flatten();
