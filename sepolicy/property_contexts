@@ -1,0 +1,2 @@
+persist.sys.camera.preview	u:object_r:camera_prop:s0
+sys.qseecomd.enable		u:object_r:qseecomd_prop:s0
