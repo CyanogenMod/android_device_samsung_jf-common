@@ -1,0 +1,2 @@
+allow system_app sysfs:file write;
+

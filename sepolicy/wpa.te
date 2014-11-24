@@ -1,0 +1,1 @@
+allow wpa efs_file:file { read open };
