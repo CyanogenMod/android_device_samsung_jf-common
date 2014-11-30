@@ -30,15 +30,12 @@
 on early-init
     mkdir /firmware 0771 system system
     mkdir /firmware-mdm 0771 system system
-    mkdir /efs 0771 system system
     symlink /data/tombstones /tombstones
     mkdir /efs 0771 system radio
     mount debugfs debugfs /sys/kernel/debug
 
 on fs
-    mount_all fstab.qcom
     setprop ro.crypto.fuse_sdcard true
-    setprop ro.product.name jgedlteue
 
     chown system radio /efs
     chmod 0771 /efs
