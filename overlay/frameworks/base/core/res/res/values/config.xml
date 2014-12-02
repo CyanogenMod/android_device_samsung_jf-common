@@ -67,7 +67,7 @@
     <!-- Array of output values for button backlight corresponding to the LUX values
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
+         This must be overridden in platform specific overl[Aays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
         <item>1</item>
         <item>1</item>
@@ -76,6 +76,10 @@
         <item>1</item>
         <item>1</item>
     </integer-array>
+
+    <! -- enable gesture support on screen off useful for wake up screen
+    with home button -->
+    <bool name="g_offscreenGestureSupport">true</bool>
 
 
     <!-- Minimum screen brightness allowed by the power manager. -->
