@@ -43,6 +43,8 @@ on fs
     chown system radio /efs
     chmod 0771 /efs
     restorecon_recursive /efs
+    chown root system /dev/hw_random
+    chmod 0640 /dev/hw_random
 
     chown system radio /dev/block/platform/msm_sdcc.1/by-name
     chmod 0775 /dev/block/platform/msm_sdcc.1/by-name
@@ -234,7 +236,7 @@ on post-fs-data
 
     # NFC_NXP
     setprop ro.nfc.port "I2C"
-    chmod 0600 /dev/pn544
+    chmod 0660 /dev/pn544
     chown nfc nfc /dev/pn544
 
     # NFC_BROADCOM
@@ -295,7 +297,7 @@ on post-fs-data
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
-    group camera system inet input graphics net_bt_stack
+    group camera system inet input graphics bluetooth
 
 service thermal-engine /system/bin/thermal-engine
     class main
@@ -303,6 +305,7 @@ service thermal-engine /system/bin/thermal-engine
     group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
+    class main
     user root
     group root system
     disabled
