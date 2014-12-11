@@ -1,0 +1,1 @@
+allow bluetooth proc_bthc:file write;
