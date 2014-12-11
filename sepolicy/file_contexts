@@ -13,3 +13,10 @@
 /sys/devices/platform/mipi_samsung_full_hd.2305/lcd/panel/power_reduce		u:object_r:panel_dev:s0
 /sys/devices/virtual/sec/sec_touchkey/keypad_enable				u:object_r:keypad_dev:s0
 /sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
+
+/sys/module/pm8921_charger/parameters/thermal_mitigation			u:object_r:sysfs_thermal:s0
+
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq				u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq				u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq				u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq				u:object_r:sysfs_devices_system_cpu:s0

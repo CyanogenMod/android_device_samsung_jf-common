@@ -1,0 +1,3 @@
+allow bluetooth proc_bthc:dir search;
+allow bluetooth proc_bthc:file open;
+allow bluetooth proc_bthc:file write;
