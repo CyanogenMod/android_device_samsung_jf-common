@@ -53,6 +53,9 @@ on boot
     start qcamerasvr
 
 on post-fs-data
+    restorecon /data/cam_socket0
+    restorecon /data/cam_socket1
+
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
