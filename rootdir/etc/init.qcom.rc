@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import init.carrier.rc
 import init.target.rc
 import init.qcom.usb.rc
 
