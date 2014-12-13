@@ -33,9 +33,11 @@
 /dev/kgsl-2d0             0666   root       root
 /dev/kgsl-2d1             0666   root       root
 /dev/ion                  0664   system     system
-/dev/rtc0                 0660   system     system
+/dev/rtc0                 0600   system     system
 /dev/smd0                 0660   system     system
 /dev/smd4                 0660   system     system
+/dev/smd5                 0660   system     system
+/dev/smd6                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
 /dev/smd7                 0660   bluetooth  bluetooth
 /dev/radio0               0640   system     system
@@ -107,8 +109,8 @@
 /dev/msm_vidc_dec         0660   system     audio
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
-/dev/msm_rotator          0660   system     system
-/dev/hw_random            0660   system     system
+/dev/msm_rotator          0660   system     graphics
+/dev/hw_random            0660    root       root
 
 #permissions for audio
 /dev/msm_qcelp            0660   system     audio
@@ -156,6 +158,13 @@
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
+/dev/wcnss_ctrl           0660   system     system
+
+# UIO devices
+/dev/uio0                 0660   system     system
+/dev/uio1                 0660   system     system
+/dev/uio2                 0660   system     system
+
 # MDM devices
 /dev/block/mmcblk0p13     0660	system	    radio
 /dev/block/mmcblk0p14     0660	system	    radio
