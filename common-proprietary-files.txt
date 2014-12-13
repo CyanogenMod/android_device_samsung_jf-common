@@ -180,7 +180,7 @@ lib/hw/sensorhubs.msm8960.so
 
 # Time services
 bin/time_daemon
-lib/libtime_genoff.so
+vendor/lib/libtime_genoff.so
 
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
