@@ -146,9 +146,11 @@ BOARD_SEPOLICY_UNION += \
     genfs_contexts \
     insthk.te \
     healthd.te \
+    hostapd.te \
     kernel.te \
     keypad_dev.te \
     mdm_helper.te \
+    mediaserver.te \
     mm-pp-daemon.te \
     mm-qcamerad.te \
     mpdecision.te \
