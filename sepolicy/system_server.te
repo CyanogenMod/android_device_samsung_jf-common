@@ -1,11 +1,7 @@
 allow system_server efs_file:dir search;
 allow system_server efs_file:file rw_file_perms;
-
 allow system_server mdm_device:chr_file r_file_perms;
-
+allow system_server self:process execmem;
 allow system_server sysfs_thermal:dir search;
 allow system_server sysfs_thermal:file r_file_perms;
-
 allow system_server time_daemon:unix_stream_socket connectto;
-
-allow system_server self:process execmem;
