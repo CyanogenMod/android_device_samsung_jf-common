@@ -342,6 +342,7 @@ service insthk /system/bin/insthk
     user root
     disabled
     oneshot
+    seclabel u:r:insthk_exec:s0
 
 on property:sys.qseecomd.enable=true
     start insthk

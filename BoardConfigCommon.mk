@@ -141,20 +141,23 @@ BOARD_SEPOLICY_DIRS += device/samsung/jf-common/sepolicy
 BOARD_SEPOLICY_UNION += \
     bluetooth.te \
     device.te \
-    file.te \
     file_contexts \
+    file.te \
+    gamma_dev.te \
     genfs_contexts \
-    insthk.te \
     healthd.te \
+    hostapd.te \
+    insthk.te \
     kernel.te \
     keypad_dev.te \
     mdm_helper.te \
+    mediaserver.te \
     mm-pp-daemon.te \
     mm-qcamerad.te \
     mpdecision.te \
     panel_dev.te \
-    property.te \
     property_contexts \
+    property.te \
     rild.te \
     system_app.te \
     system_server.te \
