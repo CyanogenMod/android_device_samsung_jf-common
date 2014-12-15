@@ -1,1 +1,2 @@
 allow mediaserver camera_prop:property_service set;
+allow mediaserver shell_data_file:dir search;
