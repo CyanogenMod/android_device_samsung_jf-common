@@ -144,8 +144,9 @@ BOARD_SEPOLICY_UNION += \
     file.te \
     file_contexts \
     genfs_contexts \
-    insthk.te \
     healthd.te \
+    hostapd.te \
+    insthk.te \
     kernel.te \
     keypad_dev.te \
     mdm_helper.te \
