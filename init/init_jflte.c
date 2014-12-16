@@ -115,6 +115,7 @@ void vendor_load_properties()
         property_set("ro.product.device", "jfltevzw");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
         property_set("ro.cdma.home.operator.numeric", "311480");
+        property_set("ro.telephony.get_imsi_from_sim", "true");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         gsm_properties();
