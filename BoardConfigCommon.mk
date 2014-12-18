@@ -138,9 +138,6 @@ BOARD_RIL_CLASS := ../../../device/samsung/jf-common/ril
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/samsung/jf-common/sepolicy
 
-# Time services
-BOARD_USES_QC_TIME_SERVICES := true
-
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
