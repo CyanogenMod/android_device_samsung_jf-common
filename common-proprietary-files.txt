@@ -179,8 +179,10 @@ lib/hw/sensors.msm8960.so
 lib/hw/sensorhubs.msm8960.so
 
 # Time services
+app/TimeService/TimeService.apk
 bin/time_daemon
-lib/libtime_genoff.so
+lib/libTimeService.so
+vendor/lib/libtime_genoff.so
 
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
