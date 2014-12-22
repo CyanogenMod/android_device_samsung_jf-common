@@ -13,3 +13,6 @@
 /sys/devices/virtual/misc/gammacontrol/tuner					u:object_r:gamma_dev:s0
 /sys/devices/virtual/sec/sec_touchkey/keypad_enable				u:object_r:keypad_dev:s0
 /sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
+
+/system/bin/macloader								u:object_r:macloader_exec:s0
+
