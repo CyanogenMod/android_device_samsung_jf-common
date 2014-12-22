@@ -944,4 +944,16 @@ public class jflteRIL extends RIL implements CommandsInterface {
             result.sendToTarget();
         }
     }
+
+    @Override
+    public void setInitialAttachApn(String apn, String protocol, int authType, String username,
+            String password, Message result) {
+        riljLog("Ignoring call to 'setInitialAttachApn'");
+        if (result != null) {
+            CommandException ex = new CommandException(
+                CommandException.Error.REQUEST_NOT_SUPPORTED);
+            AsyncResult.forMessage(result, null, ex);
+            result.sendToTarget();
+        }
+    }
 }
