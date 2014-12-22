@@ -6,6 +6,8 @@
 /dev/bcm2079x									u:object_r:nfc_device:s0
 /dev/block/mmcblk0(.*)								u:object_r:mmc_block_device:s0
 
+/efs/wifi/.mac.info								u:object_r:wifi_efs_file:s0
+
 /sys/class/misc/gammacontrol/tuner						u:object_r:panel_dev:s0
 /sys/module/pm8921_charger/parameters/thermal_mitigation			u:object_r:sysfs_thermal:s0
 /sys/devices/platform/battery_current_limit(/.*)?				u:object_r:sysfs_thermal:s0
@@ -13,3 +15,6 @@
 /sys/devices/virtual/misc/gammacontrol/tuner					u:object_r:gamma_dev:s0
 /sys/devices/virtual/sec/sec_touchkey/keypad_enable				u:object_r:keypad_dev:s0
 /sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
+
+/system/bin/macloader								u:object_r:macloader_exec:s0
+
