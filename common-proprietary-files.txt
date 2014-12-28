@@ -1,8 +1,8 @@
 # Bins
 bin/mpdecision
 bin/thermal-engine
-lib/libqc-opt.so:vendor/lib/libqc-opt.so
-lib/libthermalclient.so:vendor/lib/libthermalclient.so
+lib/libqc-opt.so
+lib/libthermalclient.so
 
 # Bluetooth firmware
 vendor/firmware/bcm4335.hcd
@@ -10,9 +10,9 @@ vendor/firmware/bcm4335_murata.hcd
 vendor/firmware/bcm4335_semco.hcd
 
 # Audio
-lib/libacdbloader.so:vendor/lib/libacdbloader.so
-lib/libaudcal.so:vendor/lib/libaudcal.so
-vendor/lib/libcsd-client.so:lib/libcsd-client.so
+lib/libacdbloader.so
+lib/libaudcal.so
+lib/libcsd-client.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -76,17 +76,9 @@ lib/libmmstillomx.so
 lib/liboemcamera.so
 lib/libsecnativefeature.so
 
-# DRM
-bin/qseecomd
-lib/libdrmdecrypt.so:vendor/lib/libdrmdecrypt.so
-lib/libdrmfs.so:vendor/lib/libdrmfs.so
-lib/libdrmtime.so:vendor/lib/libdrmtime.so
-lib/libQSEEComAPI.so:vendor/lib/libQSEEComAPI.so
-
 # GPU
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLES_android.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libGLESv2S3D_adreno.so
@@ -100,9 +92,6 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-a3xx.so
 vendor/lib/libOpenCL.so
 vendor/lib/libOpenVG.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/librs_adreno.so
-vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
 
 # GPU Firmware
@@ -127,12 +116,18 @@ bin/irsc_util
 etc/sec_config
 
 # Media
-lib/libdivxdrm.so:vendor/lib/libdivxdrm.so
-lib/libExtendedExtractor.so:vendor/lib/libExtendedExtractor.so
-lib/libI420colorconvert.so:vendor/lib/libI420colorconvert.so
-lib/libmm-color-convertor.so:vendor/lib/libmm-color-convertor.so
-lib/libmmosal.so:vendor/lib/libmmosal.so
-lib/libmmparser.so:vendor/lib/libmmparser.so
+bin/qseecomd
+lib/libDivxDrm.so
+lib/libdrmdecrypt.so
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/libExtendedExtractor.so
+lib/libI420colorconvert.so
+lib/libmm-color-convertor.so
+lib/libmmosal.so
+lib/libmmparser.so
+lib/libSHIMDivxDrm.so
+lib/libQSEEComAPI.so
 
 # NFC firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
@@ -140,8 +135,8 @@ vendor/firmware/bcm2079xB4_pre_firmware.ncd
 
 # Postprocessing
 bin/mm-pp-daemon
-lib/libmm-abl.so:vendor/lib/libmm-abl.so
-lib/libmm-abl-oem.so:vendor/lib/libmm-abl-oem.so
+lib/libmm-abl.so
+lib/libmm-abl-oem.so
 
 # QMI
 vendor/lib/libidl.so
@@ -180,7 +175,8 @@ lib/hw/sensorhubs.msm8960.so
 
 # Time services
 bin/time_daemon
-lib/libtime_genoff.so
+lib/libTimeService.so
+vendor/lib/libtime_genoff.so
 
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
