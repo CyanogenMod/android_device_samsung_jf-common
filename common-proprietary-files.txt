@@ -1,8 +1,8 @@
 # Bins
 bin/mpdecision
 bin/thermal-engine
-lib/libqc-opt.so:vendor/lib/libqc-opt.so
-lib/libthermalclient.so:vendor/lib/libthermalclient.so
+lib/libqc-opt.so
+lib/libthermalclient.so
 
 # Bluetooth firmware
 vendor/firmware/bcm4335.hcd
@@ -10,14 +10,19 @@ vendor/firmware/bcm4335_murata.hcd
 vendor/firmware/bcm4335_semco.hcd
 
 # Audio
-lib/libacdbloader.so:vendor/lib/libacdbloader.so
-lib/libaudcal.so:vendor/lib/libaudcal.so
-vendor/lib/libcsd-client.so:lib/libcsd-client.so
+lib/libacdbloader.so
+lib/libaudcal.so
+lib/libcsd-client.so
 
 # Camera
 bin/mm-qcamera-daemon
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
+cameradata/M10MO_SFW.bin
+cameradata/RS_M10MO_OL.bin
+cameradata/RS_M10MO_OS.bin
+cameradata/RS_M10MO_SL.bin
+cameradata/RS_M10MO_SS.bin
 lib/hw/camera.msm8960.so:lib/hw/camera.vendor.msm8960.so
 lib/libadsprpc.so
 lib/libchromatix_imx074_default_video.so
@@ -75,18 +80,11 @@ lib/libmmmpod.so
 lib/libmmstillomx.so
 lib/liboemcamera.so
 lib/libsecnativefeature.so
-
-# DRM
-bin/qseecomd
-lib/libdrmdecrypt.so:vendor/lib/libdrmdecrypt.so
-lib/libdrmfs.so:vendor/lib/libdrmfs.so
-lib/libdrmtime.so:vendor/lib/libdrmtime.so
-lib/libQSEEComAPI.so:vendor/lib/libQSEEComAPI.so
+lib/libvdis.so
 
 # GPU
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLES_android.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libGLESv2S3D_adreno.so
@@ -100,9 +98,6 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-a3xx.so
 vendor/lib/libOpenCL.so
 vendor/lib/libOpenVG.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/librs_adreno.so
-vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
 
 # GPU Firmware
@@ -127,12 +122,18 @@ bin/irsc_util
 etc/sec_config
 
 # Media
-lib/libdivxdrm.so:vendor/lib/libdivxdrm.so
-lib/libExtendedExtractor.so:vendor/lib/libExtendedExtractor.so
-lib/libI420colorconvert.so:vendor/lib/libI420colorconvert.so
-lib/libmm-color-convertor.so:vendor/lib/libmm-color-convertor.so
-lib/libmmosal.so:vendor/lib/libmmosal.so
-lib/libmmparser.so:vendor/lib/libmmparser.so
+bin/qseecomd
+lib/libDivxDrm.so
+lib/libdrmdecrypt.so
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/libExtendedExtractor.so
+lib/libI420colorconvert.so
+lib/libmm-color-convertor.so
+lib/libmmosal.so
+lib/libmmparser.so
+lib/libSHIMDivxDrm.so
+lib/libQSEEComAPI.so
 
 # NFC firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
@@ -140,19 +141,19 @@ vendor/firmware/bcm2079xB4_pre_firmware.ncd
 
 # Postprocessing
 bin/mm-pp-daemon
-lib/libmm-abl.so:vendor/lib/libmm-abl.so
-lib/libmm-abl-oem.so:vendor/lib/libmm-abl-oem.so
+lib/libmm-abl.so
+lib/libmm-abl-oem.so
 
 # QMI
-vendor/lib/libidl.so
-vendor/lib/libqcci_legacy.so
+lib/libidl.so
+lib/libqcci_legacy.so
+lib/libqmi_client_qmux.so
+lib/libqmiservices.so
+lib/libqmi.so
 vendor/lib/libqmi_cci.so
-vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
-vendor/lib/libqmiservices.so
-vendor/lib/libqmi.so
 
 # Radio
 bin/ds_fmc_appd
@@ -167,10 +168,10 @@ lib/libfactoryutil.so
 lib/libomission_avoidance.so
 lib/libreference-ril.so
 lib/libsecril-client.so
+lib/libdsutils.so
+lib/libnetmgr.so
+lib/libril-qcril-hook-oem.so
 vendor/lib/libdiag.so
-vendor/lib/libdsutils.so
-vendor/lib/libnetmgr.so
-vendor/lib/libril-qcril-hook-oem.so
 
 # Sensors
 lib/libsam.so
@@ -196,10 +197,9 @@ etc/wifi/nvram_net.txt
 # Widevine
 lib/drm/libfwdlockengine.so
 lib/liboemcrypto.so
+lib/libwvm.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
-vendor/lib/libWVphoneAPI.so
 vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
