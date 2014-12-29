@@ -229,7 +229,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.use-awesome=true
+    media.stagefright.use-awesome=true \
+    qcom.hw.aac.encoder=true
 
 # radio
 PRODUCT_PROPERTY_OVERRIDES += \
