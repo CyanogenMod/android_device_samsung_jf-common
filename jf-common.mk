@@ -237,7 +237,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data_netmgrd_nint=16 \
     persist.omh.enabled=1 \
     persist.radio.add_power_save=1 \
-    persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.fill_eons=1 \
     persist.radio.use_se_table_only=1 \
     ro.telephony.ril.config=newDriverCallU,newDialCode
