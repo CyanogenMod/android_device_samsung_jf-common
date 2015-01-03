@@ -108,7 +108,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1134000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 59000
-    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 119000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 119000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
