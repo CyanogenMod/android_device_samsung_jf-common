@@ -1,1 +1,3 @@
 allow mpdecision socket_device:sock_file { write create setattr };
+allow mpdecision socket_device:sock_file unlink;
+
