@@ -1,2 +1,3 @@
+#allow mediaserver device:gemini_device { read write };
 allow mediaserver camera_prop:property_service set;
 allow mediaserver shell_data_file:dir search;

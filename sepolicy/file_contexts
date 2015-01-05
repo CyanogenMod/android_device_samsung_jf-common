@@ -4,6 +4,7 @@
 /data/system/default_values							u:object_r:mpctl_data_file:s0
 
 /dev/bcm2079x									u:object_r:nfc_device:s0
+#/dev/gemini0									u:object_r:gemini_device:s0
 /dev/block/mmcblk0(.*)								u:object_r:mmc_block_device:s0
 
 /efs/wifi/.mac.info								u:object_r:wifi_efs_file:s0
