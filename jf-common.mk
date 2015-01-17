@@ -239,6 +239,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.fill_eons=1 \
     persist.radio.use_se_table_only=1 \
+    rild.libpath=/system/lib/libsec-ril.so \
     ro.telephony.ril.config=newDriverCallU,newDialCode \
     ro.ril.telephony.mqanelements=6
 
