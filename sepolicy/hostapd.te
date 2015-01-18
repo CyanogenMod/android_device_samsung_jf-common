@@ -1,1 +1,2 @@
 allow hostapd efs_file:dir search;
+allow hostapd wifi_efs_file:file { read open };

@@ -1,2 +1,3 @@
 type proc_bthc, fs_type, sysfs_type;
+type sensors_efs_file, file_type;
 type wifi_efs_file, file_type;
