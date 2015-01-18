@@ -154,6 +154,7 @@ BOARD_SEPOLICY_UNION += \
     mm-pp-daemon.te \
     mm-qcamerad.te \
     mpdecision.te \
+    netd.te \
     panel_dev.te \
     property_contexts \
     property.te \
