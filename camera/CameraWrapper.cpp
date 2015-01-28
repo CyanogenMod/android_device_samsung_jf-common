@@ -99,7 +99,25 @@ static int check_vendor_module()
     return rv;
 }
 
-const static char * iso_values[] = {"auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600,auto"};
+const static char * iso_values[] = {"auto,"
+#ifdef ISO_MODE_HJR
+"ISO_HJR,"
+#endif
+"ISO100,ISO200,ISO400,ISO800"
+#ifdef ISO_MODE_1600
+",ISO1600"
+#endif
+};
+
+#ifdef DISABLE_FACE_DETECTION_BACK
+void disable_face_detection(android::CameraParameters *params)
+{
+    params->set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
+    params->set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+    params->set(android::CameraParameters::KEY_FACE_DETECTION, "off");
+    params->set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
+}
+#endif
 
 static char * camera_fixup_getparams(int id, const char * settings)
 {
@@ -110,8 +128,22 @@ static char * camera_fixup_getparams(int id, const char * settings)
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
     params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "1920x1080");
 
+#ifdef EXPOSURE_HACK
+    params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
+    params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
+    params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
+#endif
     /* Enforce video-snapshot-supported to true */
     params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
+
+#ifdef PREVIEW_SIZE_FIXUP
+    params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, id ? "640x480" : "800x480");
+#endif
+
+#ifdef DISABLE_FACE_DETECTION_BACK
+    if (id != 1)
+        disable_face_detection(&params);
+#endif
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
@@ -125,12 +157,8 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     int id = CAMERA_ID(device);
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
-    const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
 
-    bool enableZSL = !strcmp(params.get(android::CameraParameters::KEY_ZSL), "on");
-
-    // jactive device camera don't seem to have recording hint param, so read it safely
+    // jactive device camera doesn't seem to have recording hint param, so read it safely
     const char* recordingHint = params.get(android::CameraParameters::KEY_RECORDING_HINT);
     bool isVideo = false;
     if (recordingHint)
@@ -160,6 +188,9 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
             // Magic 1508 command needs to be sent for jf
             camera_send_command(device, 1508, 0, 0);
         }
+#ifdef DISABLE_FACE_DETECTION_BACK
+        disable_face_detection(&params);
+#endif
     }
 
     android::String8 strParams = params.flatten();
@@ -300,7 +331,6 @@ void camera_stop_recording(struct camera_device * device)
     if(!device)
         return;
 
-
     VENDOR_CALL(device, stop_recording);
 }
 
@@ -335,7 +365,6 @@ int camera_auto_focus(struct camera_device * device)
     if(!device)
         return -EINVAL;
 
-
     return VENDOR_CALL(device, auto_focus);
 }
 
@@ -349,8 +378,13 @@ int camera_cancel_auto_focus(struct camera_device * device)
     if(!device)
         return -EINVAL;
 
+    /* APEXQ/EXPRESS/jactivelte: Calling cancel_auto_focus causes the camera to crash for unknown reasons.
+     * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
+     * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
+#ifndef DISABLE_AUTOFOCUS
     if (camera_preview_enabled(device))
         ret = VENDOR_CALL(device, cancel_auto_focus);
+#endif
 
     return ret;
 }
@@ -362,6 +396,11 @@ int camera_take_picture(struct camera_device * device)
 
     if(!device)
         return -EINVAL;
+
+#ifdef MAGIC_CMD_1509
+    // Magic 1509 command needs to be sent before taking a picture
+    camera_send_command(device, 1509, 0, 0);
+#endif
 
     return VENDOR_CALL(device, take_picture);
 }
@@ -392,7 +431,19 @@ int camera_set_parameters(struct camera_device * device, const char *params)
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
 #endif
 
+#ifdef PARAM_SET_STOP_PREVIEW
+    bool preview_status = camera_preview_enabled(device);
+    if (preview_status)
+        camera_stop_preview(device);
+#endif
+
     int ret = VENDOR_CALL(device, set_parameters, tmp);
+
+#ifdef PARAM_SET_STOP_PREVIEW
+    if (preview_status)
+        camera_start_preview(device);
+#endif
+
     return ret;
 }
 
