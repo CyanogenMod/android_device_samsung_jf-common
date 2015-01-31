@@ -643,6 +643,11 @@ on property:sys.boot_completed=1
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
+    write /sys/module/cpu_boost/parameters/boost_ms 10
+    write /sys/module/cpu_boost/parameters/input_boost_ms 10
+    write /sys/module/cpu_boost/parameters/sync_threshold 1242000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
+
     # Set performance profile
     setprop sys.perf.profile 1
 
