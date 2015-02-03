@@ -723,6 +723,7 @@ on property:vold.decrypt=trigger_restart_framework
 
 service charger /charger
     class charger
+    seclabel u:r:healthd:s0
 
 #Disable boot timeout for external modems.
 on property:persist.sys.mdm.timeout_disable=1
