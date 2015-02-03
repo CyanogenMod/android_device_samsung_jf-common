@@ -1,0 +1,1 @@
+allow init charger:process { rlimitinh siginh transition };

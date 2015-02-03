@@ -1,0 +1,18 @@
+type charger, domain;
+type charger_exec, exec_type, file_type;
+init_daemon_domain(charger)
+
+allow charger rootfs:file entrypoint;
+
+# audit2allow spewed this out...needs cleanup
+# probably a lot of this is completely useless
+#
+# allow charger device:chr_file { write create unlink open };
+# allow charger device:dir { read remove_name add_name };
+# allow charger input_device:chr_file { read ioctl open };
+# allow charger input_device:dir { read search open };
+# allow charger self:capability { net_admin mknod sys_tty_config };
+# allow charger self:capability2 block_suspend;
+# allow charger self:netlink_kobject_uevent_socket { read bind create setopt };
+# allow charger sysfs:file write;
+# allow charger tty_device:chr_file { read write ioctl open };
