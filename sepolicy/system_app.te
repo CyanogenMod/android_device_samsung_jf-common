@@ -1,5 +1,2 @@
 allow system_app shell_data_file:dir search;
-allow system_app gamma_dev:file { open read write getattr };
-allow system_app keypad_dev:file { open read write getattr };
 allow system_app panel_dev:file { open read write getattr };
-allow system_app vibe_dev:file { open read write getattr };
