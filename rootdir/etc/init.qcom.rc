@@ -657,6 +657,12 @@ on property:sys.boot_completed=1
 #    group system radio
 #    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
 
+    # Set up KSM
+    write /sys/kernel/mm/ksm/deferred_timer 1
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
 service hdmid /system/bin/hdmid
     class late_start
     socket hdmid stream 0660 root system graphics
