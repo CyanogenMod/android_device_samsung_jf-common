@@ -276,6 +276,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=jflteRIL
 
+# usb
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.isUsbOtgEnabled=true
+
 # wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
