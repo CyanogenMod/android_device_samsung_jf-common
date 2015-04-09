@@ -1,3 +1,4 @@
+allow system_server display_sysfs:file rw_file_perms;
 allow system_server efs_file:dir search;
 allow system_server keypad_dev:file { open read write getattr };
 allow system_server mdm_device:chr_file r_file_perms;
