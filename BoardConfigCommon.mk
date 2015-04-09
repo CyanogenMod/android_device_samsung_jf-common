@@ -135,7 +135,6 @@ BOARD_SEPOLICY_UNION += \
     device.te \
     file_contexts \
     file.te \
-    gamma_dev.te \
     genfs_contexts \
     healthd.te \
     hostapd.te \
