@@ -54,5 +54,6 @@ rm -rf $DEVBASE/*
 
 extract ../../$VENDOR/jf-common/common-proprietary-files.txt $BASE
 extract ../../$VENDOR/$DEVICE/device-proprietary-files.txt $DEVBASE
+extract ../../$VENDOR/jf-common/proprietary-files.txt $DEVBASE
 
 ./../jf-common/setup-makefiles.sh
