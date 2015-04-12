@@ -1,2 +1,0 @@
-# put anything that cannot be in jf-common
-lib/libril.so
