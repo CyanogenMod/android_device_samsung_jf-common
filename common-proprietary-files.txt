@@ -124,6 +124,7 @@ etc/sec_config
 # Media
 bin/qseecomd
 lib/libDivxDrm.so
+lib/libdivxdrmdecrypt.so
 lib/libdrmdecrypt.so
 lib/libdrmfs.so
 lib/libdrmtime.so
