@@ -8,3 +8,4 @@ allow system_server sysfs_thermal:dir search;
 allow system_server sysfs_thermal:file r_file_perms;
 allow system_server time_daemon:unix_stream_socket connectto;
 allow system_server vibe_dev:file { open read write getattr };
+allow system_server panel_dev:file { open read write };
