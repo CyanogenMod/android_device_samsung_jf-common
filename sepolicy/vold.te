@@ -1,3 +1,2 @@
 allow vold mmc_block_device:blk_file { open read write ioctl getattr };
-allow vold efs_file:dir getattr;
-
+allow vold efs_file:dir { open read ioctl getattr };
