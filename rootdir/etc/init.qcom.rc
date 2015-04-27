@@ -242,10 +242,10 @@ on post-fs-data
     chmod 0664 /data/.ant.info
 
     # for WIFI Version
-    restorecon /data/.wifiver.info
     write /data/.wifiver.info 0
     chown system root /data/.wifiver.info
     chmod 0666 /data/.wifiver.info
+    restorecon /data/.wifiver.info
 
     # for WIFI Cert
     chmod 0664 /data/.bustxglom.info
