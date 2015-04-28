@@ -224,7 +224,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.use-awesome=true \
     qcom.hw.aac.encoder=true
 
 # radio
@@ -247,7 +246,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true \
     mm.enable.smoothstreaming=true
 
 # nitz
