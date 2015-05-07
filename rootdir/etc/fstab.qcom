@@ -15,4 +15,4 @@
 /dev/block/platform/msm_sdcc.1/by-name/userdata    /data            f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                           wait,check,encryptable=footer
 
 /devices/platform/msm_sdcc.2/mmc_host/mmc2*        auto             auto    defaults                                                                  voldmanaged=sdcard1:auto,noemulatedsd
-/devices/platform/msm_hsusb_host/usb*              auto             auto    defaults                                                                  voldmanaged=usbdisk:auto
+/devices/platform/msm_hsusb_host/usb*              auto             auto    defaults                                                                  voldmanaged=usbdisk:auto,noeumlatedsd
