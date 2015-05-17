@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.msm8960
 
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8960
