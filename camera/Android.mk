@@ -1,6 +1,26 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
+ifeq ($(TARGET_NEED_DISABLE_AUTOFOCUS),true)
+    LOCAL_CFLAGS += -DDISABLE_AUTOFOCUS
+endif
+
+ifeq ($(TARGET_JACTIVE_ISO_MODES),true)
+    LOCAL_CFLAGS += -DJACTIVE_ISO_MODES
+endif
+
+ifeq ($(TARGET_NEED_EXPOSURE_HACK),true)
+    LOCAL_CFLAGS += -DEXPOSURE_HACK
+endif
+
+ifeq ($(TARGET_NEED_DISABLE_FACE_DETECTION_BACK),true)
+    LOCAL_CFLAGS += -DDISABLE_FACE_DETECTION_BACK
+endif
+
+ifeq ($(TARGET_NEED_PREVIEW_SIZE_FIXUP),true)
+    LOCAL_CFLAGS += -DPREVIEW_SIZE_FIXUP
+endif
+
 LOCAL_C_INCLUDES += \
     system/media/camera/include
 
