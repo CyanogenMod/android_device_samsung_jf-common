@@ -1,4 +1,7 @@
 LOCAL_PATH := $(call my-dir)
+
+ifeq ($(filter jactivelte,$(TARGET_DEVICE)),)
+
 include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES += \
@@ -15,3 +18,5 @@ LOCAL_MODULE := camera.msm8960
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
