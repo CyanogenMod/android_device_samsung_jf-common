@@ -100,7 +100,25 @@ static int check_vendor_module()
     return rv;
 }
 
-const static char * iso_values[] = {"auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600,auto"};
+const static char * iso_values[] = {"auto,"
+#ifdef ISO_MODE_HJR
+"ISO_HJR,"
+#endif
+"ISO100,ISO200,ISO400,ISO800"
+#ifdef ISO_MODE_1600
+",ISO1600"
+#endif
+};
+
+#ifdef DISABLE_FACE_DETECTION_BACK
+void disable_face_detection(android::CameraParameters *params)
+{
+    params->set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
+    params->set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+    params->set(android::CameraParameters::KEY_FACE_DETECTION, "off");
+    params->set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
+}
+#endif
 
 static char * camera_fixup_getparams(int id, const char * settings)
 {
@@ -110,8 +128,22 @@ static char * camera_fixup_getparams(int id, const char * settings)
     // fix params here
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
 
+#ifdef EXPOSURE_HACK
+    params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
+    params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
+    params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
+#endif
     /* Enforce video-snapshot-supported to true */
     params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
+
+#ifdef PREVIEW_SIZE_FIXUP
+    params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, id ? "640x480" : "800x480");
+#endif
+
+#ifdef DISABLE_FACE_DETECTION_BACK
+    if (id != 1)
+        disable_face_detection(&params);
+#endif
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
@@ -151,6 +183,9 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     if (id != 1) {
         params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
         params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
+#ifdef DISABLE_FACE_DETECTION_BACK
+        disable_face_detection(&params);
+#endif
     }
 
     android::String8 strParams = params.flatten();
@@ -291,7 +326,6 @@ void camera_stop_recording(struct camera_device * device)
     if(!device)
         return;
 
-
     VENDOR_CALL(device, stop_recording);
 }
 
@@ -340,8 +374,13 @@ int camera_cancel_auto_focus(struct camera_device * device)
     if(!device)
         return -EINVAL;
 
+    /* APEXQ/EXPRESS/jactivelte: Calling cancel_auto_focus causes the camera to crash for unknown reasons.
+     * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
+     * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
+#ifndef DISABLE_AUTOFOCUS
     if (camera_preview_enabled(device))
         ret = VENDOR_CALL(device, cancel_auto_focus);
+#endif
 
     return ret;
 }
