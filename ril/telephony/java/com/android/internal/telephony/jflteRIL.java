@@ -66,6 +66,11 @@ public class jflteRIL extends RIL implements CommandsInterface {
     protected boolean isGSM = false;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
     private boolean samsungEmergency = needsOldRilFeature("samsungEMSReq");
+    static final int RIL_REQUEST_DIAL_EMERGENCY = 10016;
+    static final int RIL_REQUEST_DIAL_EMERGENCY_LL = 10001;
+    private static final int RIL_UNSOL_ON_SS_LL = 11055;
+    private static final String RIL_VERSION_PROPERTY = "ro.sec_ril.version";
+    private boolean isLollipopRadio = SystemProperties.getInt(RIL_VERSION_PROPERTY, 44) == 50;
 
     public jflteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
@@ -245,7 +250,8 @@ public class jflteRIL extends RIL implements CommandsInterface {
                 p.readInt();
             }
             dc.isVoice = (0 == voiceSettings) ? false : true;
-            dc.isVoicePrivacy = (0 != p.readInt());
+            if (!isLollipopRadio)
+                dc.isVoicePrivacy = (0 != p.readInt());
             if (isGSM) {
                 p.readInt();
                 p.readInt();
@@ -255,7 +261,10 @@ public class jflteRIL extends RIL implements CommandsInterface {
             int np = p.readInt();
             dc.numberPresentation = DriverCall.presentationFromCLIP(np);
             dc.name = p.readString();
-            dc.namePresentation = p.readInt();
+            if (!isLollipopRadio)
+                dc.namePresentation = p.readInt();
+            else
+                dc.namePresentation = DriverCall.presentationFromCLIP(p.readInt());
             int uusInfoPresent = p.readInt();
             if (uusInfoPresent == 1) {
                 dc.uusInfo = new UUSInfo();
@@ -341,6 +350,12 @@ public class jflteRIL extends RIL implements CommandsInterface {
                 ret = responseInts(p);
                 setWbAmr(((int[])ret)[0]);
                 break;
+            case RIL_UNSOL_ON_SS_LL:
+                if (isLollipopRadio) {
+                    p.setDataPosition(dataPosition);
+                    p.writeInt(RIL_UNSOL_ON_SS);
+                }
+                // Intentionally fall through
             default:
                 // Rewind the Parcel
                 p.setDataPosition(dataPosition);
@@ -349,7 +364,21 @@ public class jflteRIL extends RIL implements CommandsInterface {
                 super.processUnsolicited(p);
                 return;
         }
+    }
 
+    @Override
+    public void
+    acceptCall (Message result) {
+        RILRequest rr = RILRequest.obtain(RIL_REQUEST_ANSWER, result);
+
+        if (isLollipopRadio) {
+            rr.mParcel.writeInt(1);
+            rr.mParcel.writeInt(0);
+        }
+
+        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+        send(rr);
     }
 
     @Override
@@ -615,13 +644,15 @@ public class jflteRIL extends RIL implements CommandsInterface {
         }
     }
 
-    static final int RIL_REQUEST_DIAL_EMERGENCY = 10016;
-   private void
+    private void
     dialEmergencyCall(String address, int clirMode, Message result) {
         RILRequest rr;
         Rlog.v(RILJ_LOG_TAG, "Emergency dial: " + address);
 
-        rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY, result);
+        if (!isLollipopRadio)
+            rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY, result);
+        else
+            rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY_LL, result);
         rr.mParcel.writeString(address + "/");
         rr.mParcel.writeInt(clirMode);
         rr.mParcel.writeInt(0);  // UUS information is absent
