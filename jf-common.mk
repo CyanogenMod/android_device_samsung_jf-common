@@ -181,6 +181,7 @@ PRODUCT_PACKAGES += \
     init.carrier.rc \
     init.crda.sh \
     init.qcom.rc \
+    init.qcom.power.rc \
     init.qcom.usb.rc \
     init.target.rc \
     ueventd.qcom.rc
