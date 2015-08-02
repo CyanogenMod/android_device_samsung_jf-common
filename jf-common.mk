@@ -190,6 +190,7 @@ PRODUCT_PACKAGES += \
     init.carrier.rc \
     init.crda.sh \
     init.qcom.rc \
+    init.qcom.power.rc \
     init.qcom.usb.rc \
     init.target.rc \
     ueventd.qcom.rc
@@ -223,6 +224,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=digital \
     persist.audio.speaker.location=high \
     ro.qc.sdk.audio.fluencetype=fluence
+
+# charging mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.enable_boot_charger_mode=1
 
 # display
 PRODUCT_PROPERTY_OVERRIDES += \
