@@ -320,9 +320,13 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-# SISO-ANDR-PERF :: START Changing scheduler to row after boot complete
-on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler row
+service playlpm /system/bin/playlpm
+    class sec_charger
+    user root
+
+service lpmkey /system/bin/lpmkey
+    class sec_charger
+    user root
 
 # insthk
 service insthk /system/bin/insthk
