@@ -78,7 +78,6 @@ BOARD_CHARGING_CMDLINE_VALUE := "true"
 BOARD_HARDWARE_CLASS += device/samsung/jf-common/cmhw
 
 # Display
-BOARD_EGL_CFG := device/samsung/jf-common/configs/egl.cfg
 BOARD_USES_LEGACY_MMAP := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
