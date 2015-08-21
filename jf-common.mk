@@ -91,6 +91,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     camera.msm8960
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.enable_boot_charger_mode=1
+
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
