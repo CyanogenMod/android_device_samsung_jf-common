@@ -1,5 +1,6 @@
 # Bins
 bin/mpdecision
+bin/radish
 bin/thermal-engine
 lib/libqc-opt.so
 lib/libthermalclient.so
