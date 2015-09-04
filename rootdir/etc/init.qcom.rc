@@ -33,10 +33,6 @@ import init.carrier.rc
 on early-init
     write /sys/block/mmcblk0/queue/scheduler noop
 
-    # Increase max readahead size to 512 KB
-    write /sys/block/mmcblk0/queue/read_ahead_kb 512
-    write /sys/block/mmcblk1/queue/read_ahead_kb 512
-
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
