@@ -151,10 +151,8 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
             params.set(android::CameraParameters::KEY_ISO_MODE, "1600");
     }
 
-    if (id != 1) {
-        params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
-        params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
-    }
+    params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
+    params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
 
     android::String8 strParams = params.flatten();
 
