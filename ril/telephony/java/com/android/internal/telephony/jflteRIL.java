@@ -67,8 +67,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
     private boolean samsungEmergency = needsOldRilFeature("samsungEMSReq");
 
-    private Message mPendingGetSimStatus;
-
     public jflteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
