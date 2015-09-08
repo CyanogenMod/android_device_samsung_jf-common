@@ -235,6 +235,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608 \
     ro.sf.lcd_density=480
 
+# iosched
+    persist.sys.io.scheduler=row \
+
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.hw.aac.encoder=true
