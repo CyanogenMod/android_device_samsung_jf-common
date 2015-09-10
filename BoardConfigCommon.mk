@@ -139,6 +139,7 @@ BOARD_SEPOLICY_UNION += \
     genfs_contexts \
     healthd.te \
     hostapd.te \
+    init_shell.te \
     insthk.te \
     kernel.te \
     keypad_dev.te \

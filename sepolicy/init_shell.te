@@ -1,0 +1,2 @@
+allow init_shell init:udp_socket { read write };
+
