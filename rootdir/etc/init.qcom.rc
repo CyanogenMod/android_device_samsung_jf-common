@@ -115,6 +115,13 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+    #Create PERFD deamon related dirs
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
+    chmod 2770 /data/system/perfd
+    mkdir /persist/drm 0770 system system
+
     setprop wifi.interface wlan0
 
     setprop ro.telephony.call_ring.multiple false
@@ -136,9 +143,6 @@ on boot
     chmod 644 /sys/class/graphics/fb0/msm_fb_fps_level
     chmod 400 /sys/class/graphics/fb1/msm_fb_fps_level
     chmod 400 /sys/class/graphics/fb2/msm_fb_fps_level
-
-    #For bridgemgr daemon to inform the USB driver of the correct transport
-    chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
     # For setting tcp delayed ack
     chown system system /sys/kernel/ipv4/tcp_delack_seg
@@ -206,6 +210,12 @@ on post-fs
     chmod 0664 /sys/block/mmcblk0/bkops_en
 
 on post-fs-data
+   # Create directory for TZ Apps
+   mkdir /data/misc/qsee 0770 system system
+
+   #Create a directory used by Camera subsystem
+   mkdir /data/misc/camera 0770 camera camera
+
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -230,6 +240,13 @@ on post-fs-data
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
+
+    # Create the directories used by DPM subsystem
+    mkdir /data/dpm 0771 system system
+    chown system system /data/dpm
+
+    mkdir /data/dpm/nsrm 0771 system system
+    chown system system /data/dpm/nsrm
 
     # for WIFI TRP/TIS
     write /data/.psm.info 1
@@ -324,6 +341,9 @@ on property:init.svc.surfaceflinger=stopped
     stop ppd
     stop hdmid
 
+on property:radio.atfwd.start=false
+    stop atfwd
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
@@ -345,6 +365,10 @@ on property:bluetooth.dun.status=stopped
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
+
+service dpmd /system/bin/dpmd
+    class late_start
+    socket dpmd stream 660 root system
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -382,12 +406,6 @@ service bt-sap /system/bin/sapd 15
     class late_start
     disabled
     oneshot
-
-service bridgemgrd /system/bin/bridgemgrd
-    class late_start
-    user radio
-    group radio qcom_diag
-    disabled
 
 service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
     class late_start
@@ -545,14 +563,12 @@ service ppd /system/bin/mm-pp-daemon
     socket pps stream 0660 system system graphics
     group system graphics
 
-service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
+service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     class late_start
-    group radio wifi inet
-    disabled
+    user root
+    group root
     oneshot
-
-on property:persist.data.ds_fmc_app.mode=1
-    start ds_fmc_appd
+    disabled
 
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
