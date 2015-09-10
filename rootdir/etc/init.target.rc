@@ -55,12 +55,15 @@ on boot
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
+    mkdir /data/qcks 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
     mkdir /tombstones/mdm 0771 system system
     mkdir /tombstones/mdm2 0771 system system
+    mkdir /persist/data/sfs 0700 system system
+    mkdir /persist/data/tz 0700 system system
 
     #sensors
     write /sys/class/input/input5/distortion "400 50 15"
@@ -106,6 +109,7 @@ on post-fs-data
     chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/torch-light/brightness
     chown system system /sys/class/leds/button-backlight/brightness
     chown system system /sys/class/leds/jogball-backlight/brightness
     chown system system /sys/class/leds/red/brightness
@@ -279,12 +283,19 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics net_bt_stack
 
+service thermald /system/bin/thermald
+    class main
+    user root
+    group root
+    disabled
+
 service thermal-engine /system/bin/thermal-engine
     class main
     user root
     group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
+    class main
     user root
     group root system
     disabled
@@ -307,7 +318,6 @@ service qseecomd /system/bin/qseecomd
 
 # Start kickstart if mdm is detected
 on property:ro.baseband=mdm
-    mkdir /data/qcks 0770 system system
     start kickstart
 
 # Start up mdm_helper if sglte detected
@@ -330,3 +340,23 @@ service insthk /system/bin/insthk
 
 on property:sys.qseecomd.enable=true
     start insthk
+
+service secril-daemon /system/bin/sec-ril
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw diag log
+
+service DR-daemon /system/bin/ddexe
+    class main
+    user root
+    group system radio inet net_raw
+
+service BCS-daemon /system/bin/connfwexe
+    class main
+    user root
+    group system radio inet net_raw
+
+service at_distributor /system/bin/at_distributor
+    class late_start
+    user root
+    group radio log
