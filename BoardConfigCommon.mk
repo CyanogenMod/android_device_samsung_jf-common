@@ -77,7 +77,10 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/samsung/jf-common/cmhw
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS += \
+    device/samsung/jf-common/cmhw \
+    hardware/cyanogen/cmhw
 
 # Display
 BOARD_USES_LEGACY_MMAP := true
