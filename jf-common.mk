@@ -237,7 +237,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.hw.aac.encoder=true
+    qcom.hw.aac.encoder=true \
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=33395
 
 # radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -258,10 +260,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.service_mask=0x0 \
     persist.gps.qc_nlp_in_use=0
 
-# media
-PRODUCT_PROPERTY_OVERRIDES += \
-    mm.enable.smoothstreaming=true
-
 # nitz
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_plmn="" \
@@ -277,7 +275,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
+    ro.vendor.extension_library=/system/vendor/lib/libqti-perfd-client.so
 
 # recovery
 PRODUCT_PROPERTY_OVERRIDES += \
