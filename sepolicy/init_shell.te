@@ -1,0 +1,3 @@
+# not sure about this
+allow init_shell init:udp_socket { read write };
+
