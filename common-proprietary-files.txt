@@ -2,7 +2,7 @@
 bin/mpdecision
 bin/radish
 bin/thermal-engine
-lib/libqc-opt.so
+vendor/lib/libqti-perfd-client.so
 lib/libthermalclient.so
 
 # Bluetooth firmware
@@ -107,6 +107,7 @@ etc/firmware/a300_pm4.fw:vendor/firmware/a300_pm4.fw
 etc/firmware/vidc_1080p.fw:vendor/firmware/vidc_1080p.fw
 
 # GPS
+bin/loc_launcher
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
@@ -158,16 +159,23 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
-bin/ds_fmc_appd
+bin/ATFWD-daemon
+bin/at_distributor
+bin/connfwexe
+bin/ddexe
 bin/efsks
 bin/ks
 bin/qcks
 bin/qmuxd
 bin/rild
 bin/rmt_storage
+bin/sec-ril
 lib/libatparser.so
+lib/libdsi_netctrl.so
 lib/libfactoryutil.so
 lib/libomission_avoidance.so
+lib/libqmi.so
+lib/libqdp.so
 lib/libreference-ril.so
 lib/libsecril-client.so
 lib/libdsutils.so
