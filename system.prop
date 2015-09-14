@@ -1,0 +1,8 @@
+# system.prop for SGH-M919
+#
+
+# cannot take spaces
+rild.libargs=-d /dev/smd0
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+telephony.lteOnGsmDevice=1
+ro.telephony.default_network=9
