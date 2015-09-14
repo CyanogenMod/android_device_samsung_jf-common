@@ -8,6 +8,7 @@
 /dev/bcm2079x									u:object_r:nfc_device:s0
 /dev/block/mmcblk0(.*)								u:object_r:mmc_block_device:s0
 /dev/btlock									u:object_r:bluetooth_dev:s0
+/dev/socket/mpdecision(/.*)?                                                    u:object_r:mpdecision_socket:s0
 
 /efs/hw_offset									u:object_r:sensors_efs_file:s0
 /efs/gyro_cal_data								u:object_r:sensors_efs_file:s0
@@ -21,7 +22,6 @@
 /sys/devices/platform/mipi_samsung_full_hd.2305/lcd/panel/power_reduce		u:object_r:panel_dev:s0
 /sys/devices/virtual/sec/sec_touchkey/keypad_enable				u:object_r:keypad_dev:s0
 /sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
+/sys/devices/virtual/graphics/fb0/rgb						u:object_r:display_sysfs:s0
 
 /system/bin/macloader								u:object_r:macloader_exec:s0
-
-/sys/devices/virtual/graphics/fb0/rgb						u:object_r:display_sysfs:s0
