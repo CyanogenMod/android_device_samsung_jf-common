@@ -136,17 +136,13 @@ BOARD_SEPOLICY_UNION += \
     genfs_contexts \
     healthd.te \
     hostapd.te \
-    insthk.te \
     kernel.te \
-    keypad_dev.te \
-    macloader.te \
     mdm_helper.te \
     mediaserver.te \
     mm-pp-daemon.te \
     mm-qcamerad.te \
     mpdecision.te \
     netd.te \
-    panel_dev.te \
     property_contexts \
     property.te \
     rild.te \
@@ -155,7 +151,6 @@ BOARD_SEPOLICY_UNION += \
     tee.te \
     thermal-engine.te \
     ueventd.te \
-    vibe_dev.te \
     vold.te \
     wpa.te
 
