@@ -68,6 +68,8 @@ on charger
 
 # Powersave
 on property:sys.perf.profile=0
+    setprop sys.io.scheduler bfq
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
     stop mpdecision
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
@@ -233,9 +235,6 @@ on property:sys.boot_completed=1
     write /sys/module/cpu_boost/parameters/input_boost_ms 10
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
-
-    # Set iosched
-    setprop sys.io.scheduler bfq
 
     # Set performance profile
     setprop sys.perf.profile 1
