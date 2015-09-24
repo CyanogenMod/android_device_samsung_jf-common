@@ -229,6 +229,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
 
+# dexopt
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.lazy.dexopt=1
+
 # display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_cache_width=2048 \
