@@ -30,9 +30,6 @@ import init.qcom.usb.rc
 import init.target.rc
 import init.carrier.rc
 
-on early-init
-    write /sys/block/mmcblk0/queue/scheduler noop
-
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -582,6 +579,10 @@ on nonencrypted
 
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
 
 #Disable boot timeout for external modems.
 on property:persist.sys.mdm.timeout_disable=1

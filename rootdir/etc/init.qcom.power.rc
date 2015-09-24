@@ -25,9 +25,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-service charger /sbin/healthd -c
-    class charger
-    seclabel u:r:healthd:s0
+on early-init
+    setprop sys.io.scheduler noop
+    setprop sys.perf.profile 2
 
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
