@@ -277,7 +277,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
+    ro.vendor.extension_library=/system/vendor/lib/libqti-perfd-client.so
 
 # recovery
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -286,6 +286,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # ril
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sec_ril.version=50 \
     ro.telephony.ril_class=jflteRIL
 
 # usb
