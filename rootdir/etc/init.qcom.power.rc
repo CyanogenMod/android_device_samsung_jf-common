@@ -29,7 +29,14 @@ on early-init
     setprop sys.io.scheduler noop
     setprop sys.perf.profile 2
 
+on boot
+    trigger enable-low-power
+
 on property:sys.boot_completed=1
+    setprop sys.io.scheduler bfq
+    setprop sys.perf.profile 1
+
+on enable-low-power
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
     write /sys/module/rpm_resources/enable_low_power/vdd_dig 1
@@ -132,12 +139,6 @@ on property:sys.boot_completed=1
     write /sys/module/cpu_boost/parameters/input_boost_ms 10
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
-
-    # Set iosched
-    setprop sys.io.scheduler bfq
-
-    # Set performance profile
-    setprop sys.perf.profile 1
 
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
