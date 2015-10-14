@@ -90,6 +90,7 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # GPS
 TARGET_NO_RPC := true
+TARGET_GPS_HAL_PATH := device/samsung/jf-common/gps
 
 # Includes
 TARGET_SPECIFIC_HEADER_PATH += device/samsung/jf-common/include
