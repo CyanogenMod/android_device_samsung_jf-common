@@ -26,7 +26,6 @@
 #
 
 on early-init
-    setprop sys.io.scheduler noop
     setprop sys.perf.profile 2
 
 on charger
