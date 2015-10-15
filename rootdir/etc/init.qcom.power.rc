@@ -239,3 +239,5 @@ on property:sys.boot_completed=1
 
     # Set performance profile
     setprop sys.perf.profile 1
+
+    write /dev/cpuctl/cpu.notify_on_migrate 1
