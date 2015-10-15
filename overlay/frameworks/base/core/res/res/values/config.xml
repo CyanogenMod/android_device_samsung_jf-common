@@ -23,9 +23,6 @@
 
     <bool name="config_deskDockEnablesAccelerometer">false</bool>
 
-    <!-- Default color for notification LED is white. -->
-    <color name="config_defaultNotificationColor">#ffffffff</color>
-
     <!-- Default value for led color when battery is medium charged -->
     <!-- The green LED is brighter than red, bias closer to yellow. -->
     <integer name="config_notificationsBatteryMediumARGB">0xFFFF6000</integer>
@@ -76,18 +73,6 @@
         <item>1</item>
         <item>1</item>
     </integer-array>
-
-
-    <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">10</integer>
-
-    <!-- Default screen brightness setting.
-         Must be in the range specified by minimum and maximum. -->
-    <integer name="config_screenBrightnessSettingDefault">102</integer>
-
-    <!-- Minimum screen brightness setting allowed by the power manager.
-         The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">10</integer>
 
     <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
          Please don't copy them, copy anything else. -->
@@ -165,9 +150,6 @@
 
     <!-- WiFi batched scanning -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">false</bool>
-
-    <!-- Enables or disables fading edges when marquee is enabled in TextView. -->
-    <bool name="config_ui_enableFadingMarquee">false</bool>
 
     <!-- The VoiceMail default value is displayed to my own number if it is true -->
     <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
@@ -287,21 +269,6 @@
          it causes the device to wake up.
          The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
-
-    <!-- Indicate the device's Smart Cover coordinates.
-         If none are provided, then the feature will be disabled.
-         The array should contain 4 values, in pixels, (sample values provided):
-         Top      0
-         Left     100
-         Bottom   Top + 400
-         Right    Display Width - 100
-    -->
-    <!-- <integer-array name="config_smartCoverWindowCoords">
-        <item>30</item>
-        <item>44</item>
-        <item>450</item>
-        <item>1036</item>
-    </integer-array> -->
 
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
