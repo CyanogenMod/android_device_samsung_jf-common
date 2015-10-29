@@ -1,0 +1,5 @@
+allow init keypad_dev:file setattr;
+allow init panel_dev:file { relabelto setattr };
+allow init system_file:file execute_no_trans;
+allow init vibe_dev:file { relabelto setattr };
+
