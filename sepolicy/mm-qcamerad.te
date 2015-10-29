@@ -1,1 +1,2 @@
 type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket0";
+allow mm-qcamerad system_file:file execmod;
