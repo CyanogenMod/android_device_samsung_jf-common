@@ -1,9 +1,7 @@
 # Bins
 bin/mpdecision
 bin/radish
-bin/thermal-engine
 vendor/lib/libqti-perfd-client.so
-lib/libthermalclient.so
 
 # Bluetooth firmware
 vendor/firmware/bcm4335.hcd
