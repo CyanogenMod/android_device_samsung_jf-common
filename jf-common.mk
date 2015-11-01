@@ -199,11 +199,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
-# Thermal
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf \
-    $(LOCAL_PATH)/configs/thermal-engine-8064ab.conf:system/etc/thermal-engine-8064ab.conf
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
