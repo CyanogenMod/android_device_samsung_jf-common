@@ -28,6 +28,7 @@ COMMON_PATH := device/samsung/jf-common
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno320
+USE_CLANG_PLATFORM_BUILD := true
 
 # Architecture
 TARGET_CPU_VARIANT := krait
