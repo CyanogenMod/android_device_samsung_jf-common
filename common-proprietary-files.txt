@@ -86,7 +86,6 @@ vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libGLESv2S3D_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
@@ -149,39 +148,6 @@ bin/mm-pp-daemon
 lib/libmm-abl.so
 lib/libmm-abl-oem.so
 
-# QMI
-lib/libidl.so
-lib/libqcci_legacy.so
-lib/libqmi_client_qmux.so
-lib/libqmiservices.so
-lib/libqmi.so
-vendor/lib/libqmi_cci.so
-vendor/lib/libqmi_common_so.so
-vendor/lib/libqmi_csi.so
-vendor/lib/libqmi_encdec.so
-
-# Radio
-bin/efsks
-bin/ks
-bin/netmgrd
-bin/qcks
-bin/qmuxd
-bin/rild
-bin/rmt_storage
-lib/libatparser.so
-lib/libdsi_netctrl.so
-lib/libfactoryutil.so
-lib/libomission_avoidance.so
-lib/libqdp.so
-lib/libqmi.so
-lib/libreference-ril.so
-lib/libsecril-client.so
-lib/libdsutils.so
-lib/libnetmgr.so
-lib/libril-qcril-external.so
-lib/libril-qcril-hook-oem.so
-vendor/lib/libdiag.so
-
 # Sensors
 lib/libsam.so
 lib/libsensirion_j1.so
@@ -189,7 +155,7 @@ lib/hw/sensors.msm8960.so
 lib/hw/sensorhubs.msm8960.so
 
 # Time services
-app/TimeService/TimeService.apk
+app/TimeService.apk
 bin/time_daemon
 lib/libTimeService.so
 vendor/lib/libtime_genoff.so

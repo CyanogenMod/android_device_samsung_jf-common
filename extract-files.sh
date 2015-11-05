@@ -46,13 +46,19 @@ else
   fi
 fi
 
-BASE=../../../vendor/$VENDOR/jf-common/proprietary
-rm -rf $BASE/*
+BLOBLOC=$DEVICE
+if [ "$DEVICE" == "jflteatt" ] || [ "$DEVICE" == "jfltecan" ] || [ "$DEVICE" == "jfltetmo" ] || [ "$DEVICE" == "jfltexx" ]; then
+    BLOBLOC=jf-gsm-common
+fi
 
-DEVBASE=../../../vendor/$VENDOR/$DEVICE/proprietary
-rm -rf $DEVBASE/*
 
-extract ../../$VENDOR/jf-common/common-proprietary-files.txt $BASE
-extract ../../$VENDOR/$DEVICE/device-proprietary-files.txt $DEVBASE
+BASE=../../../vendor/$VENDOR/jf-common
+rm -rf $BASE
+
+DEVBASE=../../../vendor/$VENDOR/$BLOBLOC
+rm -rf $DEVBASE
+
+extract ../../$VENDOR/jf-common/common-proprietary-files.txt $BASE/proprietary
+extract ../../$VENDOR/$DEVICE/device-proprietary-files.txt $DEVBASE/proprietary
 
 ../jf-common/setup-makefiles.sh
