@@ -52,8 +52,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MDM_SYMLINKS)
 # Create /firmware links
 FIRMWARE_IMAGES := \
     q6.b00 q6.b01 q6.b03 q6.b04 q6.b05 q6.b06 q6.mdt \
-    tzapps.b00 tzapps.b01 tzapps.b02 tzapps.b03 tzapps.mdt \
-    vidc.b00 vidc.b01 vidc.b02 vidc.b03 vidc.mdt
+    tzapps.b00 tzapps.b01 tzapps.b02 tzapps.b03 tzapps.mdt
 
 FIRMWARE_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_IMAGES)))
 $(FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
