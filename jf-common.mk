@@ -243,6 +243,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.ds_fmc_app.mode=0 \
     persist.data_netmgrd_nint=16 \
+    persist.data.qmi.adb_logmask=0 \
     persist.omh.enabled=1 \
     persist.radio.add_power_save=1 \
     persist.radio.fill_eons=1 \
