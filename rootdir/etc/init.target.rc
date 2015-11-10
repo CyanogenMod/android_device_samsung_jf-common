@@ -310,10 +310,11 @@ on property:ro.baseband=sglte
     mkdir /data/misc/mdmhelperdata 0700
     start mdm_helper
 
-service time_daemon /system/bin/time_daemon
+service timekeep /system/bin/timekeep restore
     class late_start
     user root
     group root
+    oneshot
 
 # insthk
 service insthk /system/bin/insthk

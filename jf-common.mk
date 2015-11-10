@@ -195,6 +195,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
+# Sony timekeep
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
