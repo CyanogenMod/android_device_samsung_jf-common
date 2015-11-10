@@ -21,3 +21,4 @@
 /sys/devices/virtual/timed_output/vibrator/pwm_value				u:object_r:vibe_dev:s0
 
 /system/bin/macloader								u:object_r:macloader_exec:s0
+/system/bin/timekeep								u:object_r:timekeep_exec:s0
