@@ -457,7 +457,7 @@ int camera_dump(struct camera_device * device, int fd)
     return VENDOR_CALL(device, dump, fd);
 }
 
-int camera_device_close(hw_device_t* device)
+static int camera_device_close(hw_device_t* device)
 {
     int ret = 0;
     wrapper_camera_device_t *wrapper_dev = NULL;
@@ -496,7 +496,7 @@ done:
  * so this function will always only be called once per camera instance
  */
 
-int camera_device_open(const hw_module_t* module, const char* name,
+static int camera_device_open(const hw_module_t* module, const char* name,
                 hw_device_t** device)
 {
     int rv = 0;
