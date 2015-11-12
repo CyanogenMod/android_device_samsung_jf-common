@@ -28,6 +28,9 @@
 on early-init
     setprop sys.io.scheduler noop
 
+on boot
+    trigger enable-low-power
+
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
@@ -65,7 +68,7 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
 
-on property:sys.boot_completed=1
+on enable-low-power
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
     write /sys/module/rpm_resources/enable_low_power/vdd_dig 1
@@ -88,7 +91,6 @@ on property:sys.boot_completed=1
     write /sys/module/pm_8x60/modes/cpu3/standalone_power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
 
-    stop mpdecision
     chown system system /sys/devices/system/cpu/cpu1/online
     chown system system /sys/devices/system/cpu/cpu2/online
     chown system system /sys/devices/system/cpu/cpu3/online
@@ -119,7 +121,6 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 810000
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 70
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
-    start mpdecision
 
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
     chown root system /sys/devices/system/cpu/mfreq
