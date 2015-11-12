@@ -281,9 +281,9 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics net_bt_stack
 
 service mpdecision /system/bin/mpdecision --avg_comp
+    class late_start
     user root
-    group root system
-    disabled
+    group system
 
 service kickstart /system/bin/qcks -i /firmware-mdm/image/
     user root
