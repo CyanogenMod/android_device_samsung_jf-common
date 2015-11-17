@@ -114,12 +114,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 90000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 810000
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads 90
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 810000
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 70
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
@@ -179,6 +176,8 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_ms 10
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
+
+    write /dev/cpuctl/cpu.notify_on_migrate 1
 
     # Set iosched
     setprop sys.io.scheduler bfq
