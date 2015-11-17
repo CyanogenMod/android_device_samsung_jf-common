@@ -113,7 +113,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1134000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 90000
-    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 2
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
     write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 810000
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads 90
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
