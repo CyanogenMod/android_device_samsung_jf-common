@@ -50,6 +50,7 @@ public:
         mPosMode = params;
         return false;
     }
+
     inline virtual bool reportPosition(UlpLocation &location,
                                        GpsLocationExtended &locationExtended,
                                        void* locationExt,
@@ -57,7 +58,7 @@ public:
                                        LocPosTechMask loc_technology_mask) {
         return false;
     }
-    inline virtual bool reportSv(GpsSvStatus &svStatus,
+    inline virtual bool reportSv(GnssSvStatus &svStatus,
                                  GpsLocationExtended &locationExtended,
                                  void* svExt) {
         return false;
@@ -75,6 +76,25 @@ public:
     }
     inline virtual void setAdapter(LocAdapterBase* adapter) {}
     inline virtual void setCapabilities(unsigned long capabilities) {}
+    inline virtual bool reportBatchingSession(GpsExtBatchOptions &options,
+                                              bool active) {
+        return false;
+    }
+    inline virtual bool reportPositions(GpsExtLocation * locations,
+                                        int32_t number_of_locations,
+                                        enum loc_sess_status status,
+                                        LocPosTechMask techMask) {
+        return false;
+    }
+    inline virtual bool reportDeleteAidingData(GpsAidingData aidingData)
+    {
+       return false;
+    }
+    inline virtual bool isDrEnabled()
+    {
+      return false;
+    }
+
 };
 
 } // namespace loc_core
