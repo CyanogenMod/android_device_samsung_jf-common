@@ -33,6 +33,7 @@
 #include <LocAdapterBase.h>
 #include <loc_target.h>
 #include <log_util.h>
+#include <LocAdapterProxyBase.h>
 
 namespace loc_core {
 
@@ -41,27 +42,44 @@ namespace loc_core {
 // But if getLocApi(targetEnumType target) is overriden,
 // the right locApi should get created.
 LocAdapterBase::LocAdapterBase(const LOC_API_ADAPTER_EVENT_MASK_T mask,
-                               ContextBase* context) :
+                               ContextBase* context, LocAdapterProxyBase *adapterProxyBase) :
     mEvtMask(mask), mContext(context),
-    mLocApi(context->getLocApi()), mMsgTask(context->getMsgTask())
+    mLocApi(context->getLocApi()), mLocAdapterProxyBase(adapterProxyBase),
+    mMsgTask(context->getMsgTask())
 {
     mLocApi->addAdapter(this);
 }
 
-void LocAdapterBase::
-    handleEngineDownEvent()
-DEFAULT_IMPL()
+void LocAdapterBase::handleEngineUpEvent()
+{
+    if (mLocAdapterProxyBase) {
+        mLocAdapterProxyBase->handleEngineUpEvent();
+    }
+}
+
+void LocAdapterBase::handleEngineDownEvent()
+{
+    if (mLocAdapterProxyBase) {
+        mLocAdapterProxyBase->handleEngineDownEvent();
+    }
+}
 
 void LocAdapterBase::
     reportPosition(UlpLocation &location,
                    GpsLocationExtended &locationExtended,
                    void* locationExt,
                    enum loc_sess_status status,
-                   LocPosTechMask loc_technology_mask)
-DEFAULT_IMPL()
+                   LocPosTechMask loc_technology_mask) {
+    if (mLocAdapterProxyBase == NULL ||
+        !mLocAdapterProxyBase->reportPosition(location,
+                                              status,
+                                              loc_technology_mask)) {
+        DEFAULT_IMPL()
+    }
+}
 
 void LocAdapterBase::
-    reportSv(GpsSvStatus &svStatus,
+    reportSv(GnssSvStatus &svStatus,
              GpsLocationExtended &locationExtended,
              void* svExt)
 DEFAULT_IMPL()
@@ -81,6 +99,9 @@ DEFAULT_IMPL()
 
 void LocAdapterBase::
     reportNmea(const char* nmea, int length)
+DEFAULT_IMPL()
+void LocAdapterBase::
+    reportDrNMEA(long long int, const char* nmea, int length)
 DEFAULT_IMPL()
 
 bool LocAdapterBase::
@@ -123,4 +144,12 @@ DEFAULT_IMPL(false)
 bool LocAdapterBase::
     requestNiNotify(GpsNiNotification &notify, const void* data)
 DEFAULT_IMPL(false)
+
+void LocAdapterBase::
+    shutdown()
+DEFAULT_IMPL()
+
+void LocAdapterBase::
+    reportGpsMeasurementData(GpsData &gpsMeasurementData)
+DEFAULT_IMPL()
 } // namespace loc_core
