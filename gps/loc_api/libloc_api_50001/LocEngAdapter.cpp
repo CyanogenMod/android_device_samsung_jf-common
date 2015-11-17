@@ -53,6 +53,10 @@ void LocInternalAdapter::getZppInt() {
     sendMsg(new LocEngGetZpp(mLocEngAdapter));
 }
 
+void LocInternalAdapter::shutdown() {
+    sendMsg(new LocEngShutdown(mLocEngAdapter));
+}
+
 LocEngAdapter::LocEngAdapter(LOC_API_ADAPTER_EVENT_MASK_T mask,
                              void* owner, ContextBase* context,
                              MsgTask::tCreate tCreator) :
@@ -66,7 +70,9 @@ LocEngAdapter::LocEngAdapter(LOC_API_ADAPTER_EVENT_MASK_T mask,
     mOwner(owner), mInternalAdapter(new LocInternalAdapter(this)),
     mUlp(new UlpProxyBase()), mNavigating(false),
     mSupportsAgpsRequests(false),
-    mSupportsPositionInjection(false)
+    mSupportsPositionInjection(false),
+    mSupportsTimeInjection(false),
+    mPowerVote(0)
 {
     memset(&mFixCriteria, 0, sizeof(mFixCriteria));
     mFixCriteria.mode = LOC_POSITION_MODE_INVALID;
@@ -124,6 +130,45 @@ void LocEngAdapter::setUlpProxy(UlpProxyBase* ulp)
     mUlp = ulp;
 }
 
+int LocEngAdapter::setGpsLockMsg(LOC_GPS_LOCK_MASK lockMask)
+{
+    struct LocEngAdapterGpsLock : public LocMsg {
+        LocEngAdapter* mAdapter;
+        LOC_GPS_LOCK_MASK mLockMask;
+        inline LocEngAdapterGpsLock(LocEngAdapter* adapter, LOC_GPS_LOCK_MASK lockMask) :
+            LocMsg(), mAdapter(adapter), mLockMask(lockMask)
+        {
+            locallog();
+        }
+        inline virtual void proc() const {
+            mAdapter->setGpsLock(mLockMask);
+        }
+        inline  void locallog() const {
+            LOC_LOGV("LocEngAdapterGpsLock - mLockMask: %x", mLockMask);
+        }
+        inline virtual void log() const {
+            locallog();
+        }
+    };
+    sendMsg(new LocEngAdapterGpsLock(this, lockMask));
+    return 0;
+}
+
+void LocEngAdapter::requestPowerVote()
+{
+    if (getPowerVoteRight()) {
+        /* Power voting without engine lock:
+         * 101: vote down, 102-104 - vote up
+         * These codes are used not to confuse with actual engine lock
+         * functionality, that can't be used in SSR scenario, as it
+         * conflicts with initialization sequence.
+         */
+        bool powerUp = getPowerVote();
+        LOC_LOGV("LocEngAdapterVotePower - Vote Power: %d", (int)powerUp);
+        setGpsLock(powerUp ? 103 : 101);
+    }
+}
+
 void LocInternalAdapter::reportPosition(UlpLocation &location,
                                         GpsLocationExtended &locationExtended,
                                         void* locationExt,
@@ -157,15 +202,22 @@ void LocEngAdapter::reportPosition(UlpLocation &location,
                                          loc_technology_mask);
     }
 }
+void LocInternalAdapter::reportDrNMEA(long long int timestamp,
+                  const char* nmea, int length)
+{
+   LOC_LOGV("LocInternalAdapter:reportDrNMEA TimeSt:%lld ", timestamp);
+   mLocEngAdapter->reportNmea(nmea,length);
 
-void LocInternalAdapter::reportSv(GpsSvStatus &svStatus,
+}
+
+void LocInternalAdapter::reportSv(GnssSvStatus &svStatus,
                                   GpsLocationExtended &locationExtended,
                                   void* svExt){
     sendMsg(new LocEngReportSv(mLocEngAdapter, svStatus,
                                locationExtended, svExt));
 }
 
-void LocEngAdapter::reportSv(GpsSvStatus &svStatus,
+void LocEngAdapter::reportSv(GnssSvStatus &svStatus,
                              GpsLocationExtended &locationExtended,
                              void* svExt)
 {
@@ -215,12 +267,13 @@ void LocEngAdapter::reportStatus(GpsStatusValue status)
         mInternalAdapter->reportStatus(status);
     }
 }
-
 inline
 void LocEngAdapter::reportNmea(const char* nmea, int length)
 {
+    LOC_LOGV("LocEngAdapter::reportNmea");
     sendMsg(new LocEngReportNmea(mOwner, nmea, length));
 }
+
 
 inline
 bool LocEngAdapter::reportXtraServer(const char* url1,
@@ -320,6 +373,24 @@ void LocEngAdapter::handleEngineUpEvent()
     sendMsg(new LocEngUp(mOwner));
 }
 
+enum loc_api_adapter_err LocEngAdapter::setTime(GpsUtcTime time,
+                                                int64_t timeReference,
+                                                int uncertainty)
+{
+    loc_api_adapter_err result = LOC_API_ADAPTER_ERR_SUCCESS;
+
+    LOC_LOGD("%s:%d]: mSupportsTimeInjection is %d",
+             __func__, __LINE__, mSupportsTimeInjection);
+
+    if (mSupportsTimeInjection) {
+        LOC_LOGD("%s:%d]: Injecting time", __func__, __LINE__);
+        result = mLocApi->setTime(time, timeReference, uncertainty);
+    } else {
+        mSupportsTimeInjection = true;
+    }
+    return result;
+}
+
 enum loc_api_adapter_err LocEngAdapter::setXtraVersionCheck(int check)
 {
     enum loc_api_adapter_err ret;
@@ -328,16 +399,61 @@ enum loc_api_adapter_err LocEngAdapter::setXtraVersionCheck(int check)
     switch (check) {
     case 0:
         eCheck = DISABLED;
+        break;
     case 1:
         eCheck = AUTO;
+        break;
     case 2:
         eCheck = XTRA2;
+        break;
     case 3:
         eCheck = XTRA3;
-    defaul:
+        break;
+    default:
         eCheck = DISABLED;
     }
     ret = mLocApi->setXtraVersionCheck(eCheck);
     EXIT_LOG(%d, ret);
     return ret;
+}
+
+void LocEngAdapter::reportGpsMeasurementData(GpsData &gpsMeasurementData)
+{
+    sendMsg(new LocEngReportGpsMeasurement(mOwner,
+                                           gpsMeasurementData));
+}
+
+/*
+  Update Registration Mask
+ */
+void LocEngAdapter::updateRegistrationMask(LOC_API_ADAPTER_EVENT_MASK_T event,
+                                           loc_registration_mask_status isEnabled)
+{
+    LOC_LOGD("entering %s", __func__);
+    int result = LOC_API_ADAPTER_ERR_FAILURE;
+    result = mLocApi->updateRegistrationMask(event, isEnabled);
+    if (result == LOC_API_ADAPTER_ERR_SUCCESS) {
+        LOC_LOGD("%s] update registration mask succeed.", __func__);
+    } else {
+        LOC_LOGE("%s] update registration mask failed.", __func__);
+    }
+}
+
+/*
+  Set Gnss Constellation Config
+ */
+bool LocEngAdapter::gnssConstellationConfig()
+{
+    LOC_LOGD("entering %s", __func__);
+    bool result = false;
+    result = mLocApi->gnssConstellationConfig();
+    return result;
+}
+
+/*
+  get DREnabled status
+ */
+bool LocEngAdapter::isDrEnabled()
+{
+   return mUlp->isDrEnabled();
 }
