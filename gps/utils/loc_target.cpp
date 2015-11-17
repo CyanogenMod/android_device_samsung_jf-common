@@ -34,7 +34,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
-#include "hardware/gps.h"
+#include <hardware/gps.h>
 #include <cutils/properties.h>
 #include "loc_target.h"
 #include "loc_log.h"
@@ -58,7 +58,10 @@
 #define LENGTH(s) (sizeof(s) - 1)
 #define GPS_CHECK_NO_ERROR 0
 #define GPS_CHECK_NO_GPS_HW 1
-#define QCA1530_DETECT_TIMEOUT 30
+/* When system server is started, it uses 20 seconds as ActivityManager
+ * timeout. After that it sends SIGSTOP signal to process.
+ */
+#define QCA1530_DETECT_TIMEOUT 15
 #define QCA1530_DETECT_PRESENT "yes"
 #define QCA1530_DETECT_PROGRESS "detect"
 
@@ -100,7 +103,7 @@ static int read_a_line(const char * file_path, char * line, int line_size)
  */
 static bool is_qca1530(void)
 {
-    static const char qca1530_property_name[] = "persist.qca1530";
+    static const char qca1530_property_name[] = "sys.qca1530";
     bool res = false;
     int ret, i;
     char buf[PROPERTY_VALUE_MAX];
@@ -205,14 +208,13 @@ unsigned int loc_get_target(void)
     } else {
         read_a_line(id_dep, rd_id, LINE_LEN);
     }
-
     if( !memcmp(baseband, STR_AUTO, LENGTH(STR_AUTO)) )
     {
           gTarget = TARGET_AUTO;
           goto detected;
     }
-
     if( !memcmp(baseband, STR_APQ, LENGTH(STR_APQ)) ){
+
         if( !memcmp(rd_id, MPQ8064_ID_1, LENGTH(MPQ8064_ID_1))
             && IS_STR_END(rd_id[LENGTH(MPQ8064_ID_1)]) )
             gTarget = TARGET_MPQ;
@@ -242,4 +244,18 @@ unsigned int loc_get_target(void)
 detected:
     LOC_LOGD("HAL: %s returned %d", __FUNCTION__, gTarget);
     return gTarget;
+}
+
+/*Reads the property ro.lean to identify if this is a lean target
+  Returns:
+  0 if not a lean and mean target
+  1 if this is a lean and mean target
+*/
+int loc_identify_lean_target()
+{
+    int ret = 0;
+    char lean_target[PROPERTY_VALUE_MAX];
+    property_get("ro.lean", lean_target, "");
+    LOC_LOGD("%s:%d]: lean target: %s\n", __func__, __LINE__, lean_target);
+    return !(strncmp(lean_target, "true", PROPERTY_VALUE_MAX));
 }

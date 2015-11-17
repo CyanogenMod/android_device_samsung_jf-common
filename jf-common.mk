@@ -115,8 +115,7 @@ PRODUCT_PACKAGES += \
     gps.msm8960
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/etc/gps.conf:/system/etc/gps.conf \
-    $(LOCAL_PATH)/gps/etc/sap.conf:/system/etc/sap.conf
+    $(LOCAL_PATH)/gps/etc/gps.conf:/system/etc/gps.conf
 
 # IPv6 tethering
 PRODUCT_PACKAGES += \

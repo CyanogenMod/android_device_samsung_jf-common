@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -40,11 +40,12 @@ class LocDualContext : public ContextBase {
     static const MsgTask* mMsgTask;
     static ContextBase* mFgContext;
     static ContextBase* mBgContext;
-
+    static ContextBase* mInjectContext;
     static const MsgTask* getMsgTask(MsgTask::tCreate tCreator,
                                      const char* name);
     static const MsgTask* getMsgTask(MsgTask::tAssociate tAssociate,
                                      const char* name);
+    static pthread_mutex_t mGetLocContextMutex;
 
 protected:
     LocDualContext(const MsgTask* msgTask,
@@ -52,7 +53,7 @@ protected:
     inline virtual ~LocDualContext() {}
 
 public:
-    static const char* mIzatLibName;
+    static const char* mLBSLibName;
     static const LOC_API_ADAPTER_EVENT_MASK_T mFgExclMask;
     static const LOC_API_ADAPTER_EVENT_MASK_T mBgExclMask;
     static const char* mLocationHalName;
@@ -65,6 +66,7 @@ public:
                                         const char* name);
     static ContextBase* getLocBgContext(MsgTask::tAssociate tAssociate,
                                         const char* name);
+    static void injectFeatureConfig(ContextBase *context);
 };
 
 }
