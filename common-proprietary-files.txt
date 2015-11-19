@@ -109,7 +109,11 @@ etc/firmware/vidc_1080p.fw:vendor/firmware/vidc_1080p.fw
 
 # GPS
 bin/loc_launcher
+lib/hw/gps.default.so
+lib/libgps.utils.so
 lib/libloc_api_v02.so
+lib/libloc_eng.so
+lib/libloc_core.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
