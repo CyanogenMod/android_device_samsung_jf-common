@@ -163,6 +163,7 @@ PRODUCT_COPY_FILES += \
 # OMX
 PRODUCT_PACKAGES += \
     libdashplayer \
+    libOmxCore \
     libOmxVdec \
     libOmxVenc \
     libOmxAacEnc \
