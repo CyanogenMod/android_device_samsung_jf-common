@@ -177,3 +177,5 @@ on enable-low-power
 
     # Set iosched
     setprop sys.io.scheduler bfq
+
+    rm /data/system/perfd/default_values
