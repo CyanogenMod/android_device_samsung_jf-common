@@ -239,6 +239,11 @@ public class jflteRIL extends RIL implements CommandsInterface {
             dc.isMT = (0 != p.readInt());
             dc.als = p.readInt();
             dc.isVoice = (0 != p.readInt());
+            if (!isGSM) {
+                p.readInt();
+                p.readInt();
+                p.readString();
+            }
             dc.isVoicePrivacy = (0 != p.readInt());
             dc.number = p.readString();
             dc.numberPresentation = DriverCall.presentationFromCLIP(p.readInt());
