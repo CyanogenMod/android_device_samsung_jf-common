@@ -142,11 +142,6 @@ lib/libQSEEComAPI.so
 vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
 
-# Postprocessing
-bin/mm-pp-daemon
-lib/libmm-abl.so
-lib/libmm-abl-oem.so
-
 # Sensors
 lib/libsam.so
 lib/libsensirion_j1.so
