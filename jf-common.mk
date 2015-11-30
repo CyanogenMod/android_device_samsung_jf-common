@@ -240,7 +240,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.fill_eons=1 \
     persist.radio.use_se_table_only=1 \
-    ro.telephony.ril.config=newDriverCallU,newDialCode \
     ro.ril.telephony.mqanelements=6 \
     ro.telephony.mms_data_profile=5
 
