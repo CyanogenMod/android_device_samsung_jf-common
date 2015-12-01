@@ -2,3 +2,4 @@ allow bluetooth bluetooth_efs_file:file open;
 allow bluetooth bluetooth_dev:chr_file { write open };
 allow bluetooth proc_bthc:dir search;
 allow bluetooth proc_bthc:file { open read write };
+allow bluetooth wifi_data_file:file { open read };
