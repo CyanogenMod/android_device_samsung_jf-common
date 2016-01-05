@@ -20,14 +20,13 @@
 # definition file).
 #
 
-# inherit from qcom-common
+# Inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
 COMMON_PATH := device/samsung/jf-common
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno320
 USE_CLANG_PLATFORM_BUILD := true
 
 # Architecture
@@ -88,7 +87,6 @@ BOARD_USES_LEGACY_MMAP := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
-TARGET_NO_INITLOGO := true
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
@@ -107,8 +105,6 @@ TARGET_PROVIDES_LIBLIGHT := true
 BOARD_NFC_HAL_SUFFIX := msm8960
 
 # Partitions
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00A00000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1181114368
@@ -119,13 +115,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_POWERHAL_VARIANT := qcom
 
 # Recovery
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-BOARD_USES_MMCUTILS := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
@@ -134,11 +126,6 @@ USE_DEVICE_SPECIFIC_DATASERVICES := true
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
-
-# Vold
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_VOLD_MAX_PARTITIONS := 28
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Wifi module
 BOARD_WLAN_DEVICE := bcmdhd
