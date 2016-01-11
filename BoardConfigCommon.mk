@@ -129,6 +129,7 @@ TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
+USE_DEVICE_SPECIFIC_DATASERVICES := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
