@@ -117,7 +117,9 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
 
+on property:dev.bootcomplete=1
     # Set iosched
     setprop sys.io.scheduler bfq
 
     rm /data/system/perfd/default_values
+    start mpdecision
