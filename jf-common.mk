@@ -92,13 +92,6 @@ PRODUCT_PACKAGES += \
     Snap \
     camera.msm8960
 
-# CRDA
-PRODUCT_PACKAGES += \
-    crda \
-    linville.key.pub.pem \
-    regdbdump \
-    regulatory.bin
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
