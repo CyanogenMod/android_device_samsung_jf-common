@@ -196,6 +196,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
+# SPN override
+PRODUCT_COPY_FILES += \
+    device/samsung/jf-common/selective-spn-conf.xml:system/etc/selective-spn-conf.xml
+
 # Wifi
 PRODUCT_PACKAGES += \
     libnetcmdiface \
