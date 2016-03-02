@@ -205,7 +205,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader \
-    dhcpcd.conf \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
