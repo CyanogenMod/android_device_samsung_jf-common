@@ -135,6 +135,8 @@ on property:recovery.perf.mode=0
 on property:dev.bootcomplete=1
     # Set iosched
     setprop sys.io.scheduler bfq
+    write /sys/block/mmcblk1/queue/scheduler bfq
+    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
 
     rm /data/system/perfd/default_values
     start mpdecision
