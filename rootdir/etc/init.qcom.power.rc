@@ -117,6 +117,8 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
 
+    write /dev/cpuctl/cpu.notify_on_migrate 1
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
