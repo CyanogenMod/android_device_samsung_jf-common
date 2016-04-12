@@ -40,8 +40,6 @@ on init
     # Set permissions for efs partition
     mkdir /efs 0771 system radio
 
-    # Support legacy paths
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
 on fs
