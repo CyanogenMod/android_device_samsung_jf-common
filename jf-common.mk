@@ -115,6 +115,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sap.conf:/system/etc/sap.conf \
     $(LOCAL_PATH)/configs/izat.conf:/system/etc/izat.conf
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
