@@ -120,6 +120,9 @@ on enable-low-power
 
     write /dev/cpuctl/cpu.notify_on_migrate 1
 
+    rm /data/system/perfd/default_values
+    start mpdecision
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
@@ -140,6 +143,3 @@ on property:dev.bootcomplete=1
     setprop sys.io.scheduler bfq
     write /sys/block/mmcblk1/queue/scheduler bfq
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
-
-    rm /data/system/perfd/default_values
-    start mpdecision
