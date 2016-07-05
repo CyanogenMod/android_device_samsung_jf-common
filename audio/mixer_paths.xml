@@ -352,7 +352,7 @@
         <ctl name="ES325 RX2 Enable" value="1" />
         <ctl name="VEQ Enable" value="1" />
     </path>
-	
+
     <path name="voice-handset-mic">
         <ctl name="SLIM_0_TX Channels" value="Two" />
         <ctl name="SLIM TX7 MUX" value="DEC4" />
@@ -388,10 +388,17 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="adc4" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="SLIM TX7 MUX" value="DEC2" />
+        <ctl name="DEC3 MUX" value="ADC4" />
         <ctl name="ADC4 Volume" value="3" />
         <ctl name="DEC3 Volume" value="84" />
+        <ctl name="SLIM TX8 MUX" value="DEC3" />
+        <ctl name="DEC2 MUX" value="ADC5" />
+        <ctl name="ADC5 Volume" value="3" />
+        <ctl name="DEC2 Volume" value="84" />
         <ctl name="MICBIAS3 CAPLESS Switch" value="1" />
+        <ctl name="MICBIAS4 CAPLESS Switch" value="1" />
         <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
         <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
         <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
