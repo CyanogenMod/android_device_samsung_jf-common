@@ -560,8 +560,78 @@
     <path name="usb-headset-mic">
     </path>
 
+    <!-- Dual MIC devices -->
+    <path name="speaker-dmic-endfire">
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="SLIM TX7 MUX" value="DEC2" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="DEC3 Volume" value="84" />
+        <ctl name="SLIM TX8 MUX" value="DEC3" />
+        <ctl name="DEC2 MUX" value="ADC5" />
+        <ctl name="ADC5 Volume" value="3" />
+        <ctl name="DEC2 Volume" value="84" />
+        <ctl name="MICBIAS3 CAPLESS Switch" value="1" />
+        <ctl name="MICBIAS4 CAPLESS Switch" value="1" />
+        <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
+    </path>
+
     <path name="echo-reference">
         <ctl name="EC_REF_RX" value="SLIM_RX" />
+    </path>
+
+    <path name="dmic-endfire">
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="ADC3 Volume" value="3" />
+        <ctl name="DEC4 Volume" value="84" />
+        <ctl name="SLIM TX8 MUX" value="DEC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="DEC3 Volume" value="84" />
+        <ctl name="MICBIAS3 CAPLESS Switch" value="1" />
+        <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
+    </path>
+
+    <path name="voice-dmic-ef">
+        <path name="dmic-endfire" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="4" />
+        <ctl name="ES325 TX1 Enable" value="1" />
+    </path>
+
+    <path name="voice-speaker-dmic-ef">
+        <path name="speaker-dmic-endfire" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="3" />
+        <ctl name="ES325 TX1 Enable" value="1" />
+    </path>
+
+    <path name="voice-rec-dmic-ef">
+        <path name="dmic-endfire" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="4" />
+        <ctl name="ES325 TX1 Enable" value="1" />
+    </path>
+
+    <path name="voice-rec-dmic-ef-fluence">
+        <path name="dmic-endfire" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="4" />
+        <ctl name="ES325 TX1 Enable" value="1" />
+    </path>
+
+    <path name="handset-stereo-dmic-ef">
+         <path name="dmic-endfire" />
+    </path>
+
+    <path name="speaker-stereo-dmic-ef">
+         <path name="speaker-dmic-endfire" />
     </path>
 
     <!-- TTY devices -->
