@@ -158,11 +158,11 @@
     </path>
 
     <path name="multi-channel-playback hdmi">
-        <ctl name="HDMI Mixer MultiMedia1" value="1" />
+        <ctl name="HDMI Mixer MultiMedia2" value="1" />
     </path>
 
     <path name="multi-channel-playback afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="1" />
     </path>
 
     <path name="audio-record">
@@ -579,7 +579,7 @@
         <ctl name="RX2 Digital Volume" value="84" />
         <ctl name="Internal Route Config" value="6" />
         <ctl name="ES325 RX2 Enable" value="1" />
-     </path>
+    </path>
 
     <path name="voice-tty-full-headphones">
         <ctl name="TTY Mode" value="FULL" />
