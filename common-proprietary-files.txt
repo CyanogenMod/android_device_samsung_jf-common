@@ -12,6 +12,7 @@ vendor/firmware/bcm4335_semco.hcd
 lib/libacdbloader.so
 lib/libaudcal.so
 lib/libcsd-client.so
+lib/hw/audio.primary.msm8960.so
 
 # Camera
 bin/mm-qcamera-daemon
