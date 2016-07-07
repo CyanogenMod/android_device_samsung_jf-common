@@ -92,10 +92,6 @@
     <ctl name="Voip_Tx Mixer AUX_PCM_TX_Voip" value="0" />
     <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="0" />
 
-    <!-- echo reference -->
-    <ctl name="EC_REF_RX" value="NONE" />
-    <!-- echo reference end -->
-
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
@@ -558,10 +554,6 @@
     </path>
 
     <path name="usb-headset-mic">
-    </path>
-
-    <path name="echo-reference">
-        <ctl name="EC_REF_RX" value="SLIM_RX" />
     </path>
 
     <!-- TTY devices -->
