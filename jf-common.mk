@@ -215,7 +215,11 @@ PRODUCT_COPY_FILES += \
 # audio
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.disable=1 \
-    use.dedicated.device.for.voip=true
+    use.dedicated.device.for.voip=true \
+    ro.qc.sdk.audio.fluencetype=fluence \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true
 
 # charging mode
 PRODUCT_PROPERTY_OVERRIDES += \

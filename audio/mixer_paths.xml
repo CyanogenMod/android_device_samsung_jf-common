@@ -560,10 +560,6 @@
     <path name="usb-headset-mic">
     </path>
 
-    <path name="echo-reference">
-        <ctl name="EC_REF_RX" value="SLIM_RX" />
-    </path>
-
     <!-- TTY devices -->
     <path name="tty-headphones">
         <ctl name="SLIM_0_RX Channels" value="Two" />
