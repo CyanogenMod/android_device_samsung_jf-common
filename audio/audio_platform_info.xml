@@ -42,6 +42,10 @@
         <device name="SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES" acdb_id="102"/>
 
         <!-- Input devices -->
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="11" />
         <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="54" />
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="53" />
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="56" />
@@ -65,7 +69,11 @@
     </pcm_ids>
 
     <device_names>
+        <device name="SND_DEVICE_IN_VOICE_DMIC" alias="voice-handset-mic" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="voice-speaker-mic" />
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" alias="handset-mic" />
+        <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" alias="handset-mic" />
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC" alias="speaker-mic" />
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" alias="speaker-mic" />
     </device_names>
 </audio_platform_info>
