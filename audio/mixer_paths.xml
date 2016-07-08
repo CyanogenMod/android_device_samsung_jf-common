@@ -437,6 +437,20 @@
         <ctl name="ES325 TX1 Enable" value="1" />
     </path>
 
+    <path name="voice-headset-main-mic">
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="DEC4 Volume" value="84" />
+        <ctl name="ADC3 Volume" value="3" />
+        <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="0" />
+        <ctl name="ES325 TX1 Enable" value="1" />
+    </path>
+
     <path name="speaker-and-headphones">
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX5 MIX1 INP1" value="RX1" />
@@ -558,10 +572,6 @@
     </path>
 
     <path name="usb-headset-mic">
-    </path>
-
-    <path name="echo-reference">
-        <ctl name="EC_REF_RX" value="SLIM_RX" />
     </path>
 
     <!-- TTY devices -->
