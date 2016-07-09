@@ -75,15 +75,12 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8960 \
     audio.r_submix.default \
     audio.usb.default \
-    libaudio-resampler \
-    libqcomvoiceprocessing
+    libaudio-resampler
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/audio/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
@@ -214,8 +211,11 @@ PRODUCT_COPY_FILES += \
 
 # audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.disable=1 \
-    use.dedicated.device.for.voip=true
+    persist.audio.fluence.mode=endfire \
+    persist.audio.vr.enable=false \
+    persist.audio.handset.mic=digital \
+    persist.audio.speaker.location=high \
+    ro.qc.sdk.audio.fluencetype=fluence
 
 # charging mode
 PRODUCT_PROPERTY_OVERRIDES += \
