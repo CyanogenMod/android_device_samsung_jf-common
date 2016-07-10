@@ -129,7 +129,6 @@ etc/sec_config
 # Media
 bin/qseecomd
 lib/libDivxDrm.so
-lib/libdrmdecrypt.so
 lib/libdrmfs.so
 lib/libdrmtime.so
 lib/libI420colorconvert.so
@@ -164,11 +163,9 @@ etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
 
 # Widevine
-lib/drm/libfwdlockengine.so
-lib/liboemcrypto.so
-lib/libwvm.so
+lib/libdrmdecrypt.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
