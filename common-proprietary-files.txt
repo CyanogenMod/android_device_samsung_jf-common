@@ -1,17 +1,15 @@
-# Bins
-bin/mpdecision
-bin/radish
-vendor/lib/libqti-perfd-client.so
-
-# Bluetooth firmware
-vendor/firmware/bcm4335.hcd
-vendor/firmware/bcm4335_murata.hcd
-vendor/firmware/bcm4335_semco.hcd
+# ADSP
+lib/libadsprpc.so
 
 # Audio
 lib/libacdbloader.so
 lib/libaudcal.so
 lib/libcsd-client.so
+
+# Bluetooth firmware
+vendor/firmware/bcm4335.hcd
+vendor/firmware/bcm4335_murata.hcd
+vendor/firmware/bcm4335_semco.hcd
 
 # Camera
 bin/mm-qcamera-daemon
@@ -23,7 +21,29 @@ cameradata/RS_M10MO_OS.bin
 cameradata/RS_M10MO_SL.bin
 cameradata/RS_M10MO_SS.bin
 lib/hw/camera.msm8960.so:lib/hw/camera.vendor.msm8960.so
-lib/libadsprpc.so
+lib/libgemini.so
+lib/libimage-jpeg-enc-omx-comp.so
+lib/libimage-omx-common.so
+lib/libmercury.so
+lib/libmmcamera_faceproc.so
+lib/libmmcamera_frameproc.so
+lib/libmmcamera_hdr_lib.so
+lib/libmmcamera_image_stab.so
+lib/libmmcamera_imx091.so
+lib/libmmcamera_interface.so
+lib/libmmcamera_interface2.so
+lib/libmmcamera_plugin.so
+lib/libmmcamera_statsproc31.so
+lib/libmmcamera_wavelet_lib.so
+lib/libmmjpeg.so
+lib/libmmjpeg_interface.so
+lib/libmmmpod.so
+lib/libmmstillomx.so
+lib/liboemcamera.so
+lib/libsecnativefeature.so
+lib/libvdis.so
+
+# Camera chromatix
 lib/libchromatix_imx074_default_video.so
 lib/libchromatix_imx074_preview.so
 lib/libchromatix_imx074_video_hd.so
@@ -59,27 +79,24 @@ lib/libchromatix_s5k6b2yx_smartstay.so
 lib/libchromatix_s5k6b2yx_video.so
 lib/libchromatix_s5k6b2yx_vt.so
 lib/libchromatix_s5k6b2yx_vt_hd.so
-lib/libgemini.so
-lib/libimage-jpeg-enc-omx-comp.so
-lib/libimage-omx-common.so
-lib/libmercury.so
-lib/libmmcamera_faceproc.so
-lib/libmmcamera_frameproc.so
-lib/libmmcamera_hdr_lib.so
-lib/libmmcamera_image_stab.so
-lib/libmmcamera_imx091.so
-lib/libmmcamera_interface.so
-lib/libmmcamera_interface2.so
-lib/libmmcamera_plugin.so
-lib/libmmcamera_statsproc31.so
-lib/libmmcamera_wavelet_lib.so
-lib/libmmjpeg.so
-lib/libmmjpeg_interface.so
-lib/libmmmpod.so
-lib/libmmstillomx.so
-lib/liboemcamera.so
-lib/libsecnativefeature.so
-lib/libvdis.so
+
+# DRM
+bin/qseecomd
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/libQSEEComAPI.so
+
+# GPS
+bin/loc_launcher
+lib/hw/gps.default.so
+lib/libgps.utils.so
+lib/libloc_api_v02.so
+lib/libloc_eng.so
+lib/libloc_core.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/liblocationservice.so
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
@@ -105,41 +122,32 @@ etc/firmware/vidc_1080p.fw
 vendor/firmware/a300_pfp.fw
 vendor/firmware/a300_pm4.fw
 
-# GPS
-bin/loc_launcher
-lib/hw/gps.default.so
-lib/libgps.utils.so
-lib/libloc_api_v02.so
-lib/libloc_eng.so
-lib/libloc_core.so
-vendor/lib/libgeofence.so
-vendor/lib/libizat_core.so
-vendor/lib/liblbs_core.so
-vendor/lib/liblocationservice.so
-
 # HDCP
 bin/insthk
 etc/srm.bin
 lib/libhdcp2.so
 
-# IPC router security
-bin/irsc_util
-etc/sec_config
-
 # Media
-bin/qseecomd
 lib/libDivxDrm.so
-lib/libdrmfs.so
-lib/libdrmtime.so
 lib/libI420colorconvert.so
-lib/libmm-color-convertor.so
 lib/libmmosal.so
+lib/libmm-color-convertor.so
 lib/libSHIMDivxDrm.so
-lib/libQSEEComAPI.so
 
 # NFC firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
+
+# Perf
+bin/mpdecision
+vendor/lib/libqti-perfd-client.so
+
+# Qualcomm framework
+bin/irsc_util
+etc/sec_config
+
+# Radio
+bin/radish
 
 # Sensors
 lib/libsam.so
@@ -153,6 +161,14 @@ bin/time_daemon
 lib/libTimeService.so
 vendor/lib/libtime_genoff.so
 
+# Widevine
+lib/libdrmdecrypt.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/mediadrm/libwvdrmengine.so
+
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_ibss.bin
@@ -161,11 +177,3 @@ etc/wifi/bcmdhd_sta.bin
 etc/wifi/cred.conf
 etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
-
-# Widevine
-lib/libdrmdecrypt.so
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/mediadrm/libwvdrmengine.so
