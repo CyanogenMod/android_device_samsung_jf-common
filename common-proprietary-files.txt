@@ -118,9 +118,9 @@ vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsc-a3xx.so
 
 # Graphics firmware
+etc/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw
 etc/firmware/vidc_1080p.fw
-vendor/firmware/a300_pfp.fw
-vendor/firmware/a300_pm4.fw
 
 # HDCP
 bin/insthk
