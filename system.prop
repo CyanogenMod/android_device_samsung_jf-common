@@ -2,12 +2,11 @@
 dalvik.vm.dex2oat-swap=false
 
 # Audio
-persist.audio.fluence.mode=endfire
-persist.audio.handset.mic=digital
-persist.audio.speaker.location=high
-persist.audio.vr.enable=false
-qcom.hw.aac.encoder=true
+audio.offload.disable=1
+persist.audio.fluence.speaker=true
+persist.audio.fluence.voicecall=true
 ro.qc.sdk.audio.fluencetype=fluence
+use.dedicated.device.for.voip=true
 
 # Bluetooth
 ro.bt.bdaddr_path=/efs/bluetooth/bt_addr
