@@ -127,11 +127,8 @@ etc/srm.bin
 lib/libhdcp2.so
 
 # Media
-lib/libDivxDrm.so
 lib/libI420colorconvert.so
-lib/libmmosal.so
 lib/libmm-color-convertor.so
-lib/libSHIMDivxDrm.so
 
 # NFC firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
