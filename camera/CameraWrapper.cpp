@@ -30,7 +30,7 @@
 #include <utils/String8.h>
 #include <utils/threads.h>
 
-#define BACK_CAMERA_ID 0
+#define REAR_CAMERA_ID 0
 #define FRONT_CAMERA_ID 1
 
 using namespace android;
@@ -100,34 +100,41 @@ static int check_vendor_module()
     return rv;
 }
 
-const static char *iso_values[] =
-        {"auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600,auto"};
-
 static char *camera_fixup_getparams(int id, const char *settings)
 {
     CameraParameters params;
     params.unflatten(String8(settings));
 
-    ALOGV("%s: original parameters:", __FUNCTION__);
+    ALOGV("%s: Original parameters:", __FUNCTION__);
     params.dump();
 
-    /* Correct ISO params */
-    params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
+    const char *recordHint = params.get(CameraParameters::KEY_RECORDING_HINT);
+    bool videoMode = recordHint ? !strcmp(recordHint, "true") : false;
 
-    /* Remove HDR on rear cam */
-    if (id == BACK_CAMERA_ID) {
+    /* Rear photos: Remove HDR scene mode */
+    if (!videoMode && id == REAR_CAMERA_ID) {
         params.set(CameraParameters::KEY_SUPPORTED_SCENE_MODES,
                 "auto,action,night,sunset,party");
     }
 
-    /* Enforce video-snapshot-supported to true */
-    params.set(CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
+    /* Photos: Correct exposed ISO values */
+    if (!videoMode) {
+        params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES,
+                "auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600");
+    }
+
+    /* Videos: Enable video stabilization support */
+    if (videoMode) {
+        params.set(CameraParameters::KEY_VIDEO_STABILIZATION_SUPPORTED, "true");
+    }
 
     ALOGV("%s: Fixed parameters:", __FUNCTION__);
     params.dump();
 
     String8 strParams = params.flatten();
-    return strdup(strParams.string());
+    char *ret = strdup(strParams.string());
+
+    return ret;
 }
 
 static char *camera_fixup_setparams(int id, const char *settings)
@@ -138,20 +145,17 @@ static char *camera_fixup_setparams(int id, const char *settings)
     ALOGV("%s: Original parameters:", __FUNCTION__);
     params.dump();
 
-    /* Read recording hint param safely */
-    const char *recordingHint = params.get(
-            CameraParameters::KEY_RECORDING_HINT);
-    bool isVideo = false;
-    if (recordingHint)
-        isVideo = !strcmp(recordingHint, "true");
+    const char *recordHint = params.get(CameraParameters::KEY_RECORDING_HINT);
+    bool isVideo = recordHint ? !strcmp(recordHint, "true") : false;
 
-    /*
-     * Fix params here
-     * No need to fix-up ISO_HJR;
-     * it is the same for userspace and the camera lib
-     */
-    if (params.get("iso")) {
-        const char *isoMode = params.get(CameraParameters::KEY_ISO_MODE);
+    /* Rear videos: Correct camera mode to 0 */
+    if (isVideo && id == REAR_CAMERA_ID) {
+        params.set(CameraParameters::KEY_CAMERA_MODE, "0");
+    }
+
+    /* Photos: Map the corrected ISO values to the ones in the HAL */
+    const char *isoMode = params.get(CameraParameters::KEY_ISO_MODE);
+    if (!isVideo && isoMode) {
         if (strcmp(isoMode, "ISO100") == 0)
             params.set(CameraParameters::KEY_ISO_MODE, "100");
         else if (strcmp(isoMode, "ISO200") == 0)
@@ -163,9 +167,6 @@ static char *camera_fixup_setparams(int id, const char *settings)
         else if (strcmp(isoMode, "ISO1600") == 0)
             params.set(CameraParameters::KEY_ISO_MODE, "1600");
     }
-
-    params.set(CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
-    params.set(CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
 
     ALOGV("%s: Fixed parameters:", __FUNCTION__);
     params.dump();
