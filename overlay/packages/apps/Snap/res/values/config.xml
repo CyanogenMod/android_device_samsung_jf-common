@@ -23,4 +23,8 @@
 
     <!-- Opens front camera using openLegacy() -->
     <bool name="front_camera_open_legacy">false</bool>
+
+    <!-- ISO values use numbers.
+         Example: 50 instead of ISO50 -->
+    <bool name="iso_values_use_numbers">true</bool>
 </resources>
