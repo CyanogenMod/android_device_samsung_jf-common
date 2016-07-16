@@ -179,7 +179,6 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.carrier.rc \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
@@ -214,6 +213,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=digital \
     persist.audio.speaker.location=high \
     ro.qc.sdk.audio.fluencetype=fluence
+
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bt.bdaddr_path=/efs/bluetooth/bt_addr
 
 # charging mode
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -250,6 +253,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true
+
+# NFC
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
 
 # nitz
 PRODUCT_PROPERTY_OVERRIDES += \
