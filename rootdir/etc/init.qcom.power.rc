@@ -142,15 +142,3 @@ on property:recovery.perf.mode=0
 on property:dev.bootcomplete=1
     # Set iosched
     setprop sys.io.scheduler bfq
-
-# Configure IO scheduler
-on property:sys.io.scheduler=*
-    write /sys/block/mmcblk1/queue/scheduler ${sys.io.scheduler}
-
-# Set slice_idle to 0 for CFQ
-on property:sys.io.scheduler=cfq
-    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
-
-# Set slice_idle to 0 for BFQ
-on property:sys.io.scheduler=bfq
-    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
