@@ -525,6 +525,11 @@ service charger /sbin/healthd -c
     class charger
     seclabel u:r:healthd:s0
 
+service thermal-engine /system/bin/thermal-engine
+    class main
+    user root
+    group root
+
 # Disable boot timeout for external modems
 on property:persist.sys.mdm.timeout_disable=1
     write /sys/module/mdm_common/parameters/disable_boot_timeout 1
