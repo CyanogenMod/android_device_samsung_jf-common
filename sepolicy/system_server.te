@@ -9,3 +9,6 @@ allow system_server system_file:file execmod;
 allow system_server time_daemon:unix_stream_socket connectto;
 allow system_server vibe_dev:file rw_file_perms;
 allow system_server wifi_efs_file:file r_file_perms;
+
+allow system_server sysfs_thermal:dir search;
+allow system_server sysfs_thermal:file r_file_perms;
