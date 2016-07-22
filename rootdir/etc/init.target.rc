@@ -231,7 +231,6 @@ on post-fs-data
     chmod 0660 /sys/class/timed_output/vibrator/pwm_value
 
     # NFC_NXP
-    setprop ro.nfc.port "I2C"
     chmod 0600 /dev/pn544
     chown nfc nfc /dev/pn544
 

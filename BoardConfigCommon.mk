@@ -102,6 +102,10 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 
+# Properties (reset them here, include more in device if needed)
+TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/$(TARGET_RADIO_VARIANT).prop
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
