@@ -1,0 +1,16 @@
+# GPS
+ro.gps.set_privacy=1
+
+# Radio
+DEVICE_PROVISIONED=1
+persist.eons.enabled=false
+persist.radio.snapshot_enabled=1
+persist.radio.snapshot_timer=22
+rild.libpath=/system/lib/libsec-ril.so
+ro.config.combined_signal=true
+ro.config.multimode_cdma=1
+ro.gsm.data_retry_config=max_retries=infinite,5000,5000,60000,120000,480000,900000
+ro.telephony.default_cdma_sub=0
+ro.telephony.default_network=10
+ro.telephony.get_imsi_from_sim=true
+telephony.lteOnCdmaDevice=1
