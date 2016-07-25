@@ -3,6 +3,7 @@ allow system_server self:process execmem;
 allow system_server efs_file:dir search;
 allow system_server keypad_dev:file rw_file_perms;
 allow system_server mdm_device:chr_file r_file_perms;
+allow system_server media_rw_data_file:dir search;
 allow system_server panel_dev:file rw_file_perms;
 allow system_server sensors_efs_file:file rw_file_perms;
 allow system_server system_file:file execmod;
