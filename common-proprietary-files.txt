@@ -7,9 +7,7 @@ lib/libaudcal.so
 lib/libcsd-client.so
 
 # Bluetooth firmware
-vendor/firmware/bcm4335.hcd
-vendor/firmware/bcm4335_murata.hcd
-vendor/firmware/bcm4335_semco.hcd
+vendor/firmware/bcm4335_V0343.0353.hcd
 
 # Camera
 bin/mm-qcamera-daemon
