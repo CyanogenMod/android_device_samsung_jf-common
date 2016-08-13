@@ -42,7 +42,9 @@
         <device name="SND_DEVICE_IN_HANDSET_DMIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC" acdb_id="11" />
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" acdb_id="11" />
         <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="53" />
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="11" />
         <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="53" />
@@ -70,7 +72,7 @@
     <device_names>
         <device name="SND_DEVICE_IN_VOICE_DMIC" alias="voice-handset-mic" />
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="voice-speaker-mic" />
-        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" alias="handset-mic" />
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" alias="voice-rec-mic" />
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" alias="handset-mic" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC" alias="speaker-mic" />
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" alias="speaker-mic" />
