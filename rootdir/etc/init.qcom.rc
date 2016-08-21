@@ -139,6 +139,10 @@ on post-fs-data
     mkdir /data/system 0775 system system
     rm /data/system/wpa_supplicant
 
+    # Create directories for perfd
+    mkdir /data/misc/perfd 2770 root system
+    mkdir /data/system/perfd 2770 root system
+
     setprop vold.post_fs_data_done 1
 
 on early-boot
@@ -167,10 +171,6 @@ on boot
     mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
     mkdir /dev/socket/qmux_gps 2770 gps gps
     mkdir /dev/socket/qmux_radio 2770 radio radio
-
-    # Create directories for perfd
-    mkdir /data/misc/perfd 2770 root system
-    mkdir /data/system/perfd 2770 root system
 
     # Change permissions for fps_level nodes
     chown system graphics /sys/class/graphics/fb0/msm_fb_fps_level
