@@ -159,7 +159,7 @@ lib/libthermalclient.so
 -app/TimeService/TimeService.apk
 bin/time_daemon
 lib/libTimeService.so
-vendor/lib/libtime_genoff.so
+-vendor/lib/libtime_genoff.so
 
 # Widevine
 lib/libdrmdecrypt.so|00678a3048b9bbf3b341bc90d141656245983135
