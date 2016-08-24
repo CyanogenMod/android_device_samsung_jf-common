@@ -102,6 +102,9 @@ TARGET_POWERHAL_VARIANT := qcom
 # Properties (reset them here, include more in device if needed)
 TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
 
+# Qualcomm support
+BOARD_USES_QC_TIME_SERVICES := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
