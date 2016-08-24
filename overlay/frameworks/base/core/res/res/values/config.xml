@@ -205,7 +205,7 @@
     -->
     <integer name="config_longPressOnHomeBehavior">3</integer>
 
-    <!-- Control the behavior when the user double-taps the home button.
+    <!-- Control the behavior when the user long presses the app switch button.
             0 - Nothing
             1 - Menu key
             2 - Recent apps view in SystemUI
@@ -215,7 +215,7 @@
          This needs to match the constants in
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
-    <integer name="config_doubleTapOnHomeBehavior">2</integer>
+    <integer name="config_longPressOnAppSwitchBehavior">1</integer>
 
     <!-- Disable the home key unlock setting -->
     <!-- <bool name="config_disableHomeUnlockSetting">false</bool> -->
@@ -232,7 +232,7 @@
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">71</integer>
+    <integer name="config_deviceHardwareKeys">83</integer>
 
     <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
