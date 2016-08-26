@@ -36,6 +36,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -111,8 +112,8 @@ BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
 USE_DEVICE_SPECIFIC_DATASERVICES := true
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
+#include device/qcom/sepolicy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Wifi module
 BOARD_WLAN_DEVICE := bcmdhd
