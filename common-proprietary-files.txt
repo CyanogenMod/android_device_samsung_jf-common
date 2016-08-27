@@ -97,25 +97,25 @@ vendor/lib/liblbs_core.so
 vendor/lib/liblocationservice.so
 
 # Graphics
-vendor/lib/egl/eglsubAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/egl/libplayback_adreno.so
-vendor/lib/libadreno_utils.so
-vendor/lib/libbccQTI.so
-vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a3xx.so
-vendor/lib/libc2d30.so
-vendor/lib/libCB.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-qcom.so
-vendor/lib/libRSDriver_adreno.so
-vendor/lib/librs_adreno.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/libsc-a3xx.so
-vendor/lib/libuiblur.so
+vendor/lib/egl/eglsubAndroid.so|7c61aa658248fd89e86c67bbb8b837b68eae9588
+vendor/lib/egl/libEGL_adreno.so|18d2a997d8355881e2d03b92d949487b1de1e424
+vendor/lib/egl/libGLESv1_CM_adreno.so|b5cb44d29a280ba77246a5e08d87bc8e3b7cfa3f
+vendor/lib/egl/libGLESv2_adreno.so|99ecbfd42293f8ff040c6477dbf4d81421e1d1af
+vendor/lib/egl/libq3dtools_adreno.so|ef35bcdb8754b4c5e88afb1386a55d193c074d63
+vendor/lib/egl/libplayback_adreno.so|66994beb50297a78219c61a0536d05db1d3a938c
+vendor/lib/libadreno_utils.so|63f1406713ac00f3a95d8c299705c4f4c6f4b2db
+vendor/lib/libbccQTI.so|f385f39ce001cbf9cdc897f9ff541ea362161b12
+vendor/lib/libC2D2.so|ffc822ea2a1c867934096b9d5d17482254e424e4
+vendor/lib/libc2d30-a3xx.so|c69ae6dde6ef1670b93f2ad501c2087d162cd0eb
+vendor/lib/libc2d30.so|e95d8de66d99eb633a68e99ba4f65b72ad6c014d
+vendor/lib/libCB.so|1fff203eff9ed9c9d33d26a79ce2a4738364f45d
+vendor/lib/libgsl.so|4b8d8fb80b390b1570828f5d36d7ca83c08ebaa3
+vendor/lib/libllvm-qcom.so|ce908bafd697a26bffe58d6784446b7b796aae02
+vendor/lib/libRSDriver_adreno.so|280d6ef346561427f5cf022815e698645c45f520
+vendor/lib/librs_adreno.so|c06029be4f10843d599dd06d5915b09b7beecca7
+vendor/lib/librs_adreno_sha1.so|57378b4019cd1bfa4b574f6aa0b2d6edd3d3ef84
+vendor/lib/libsc-a3xx.so|572fb8a4439d956151cf7571f9ccdce33e811520
+vendor/lib/libuiblur.so|2dee48b106855d40b80062700421b5ec7853d178
 
 # Graphics firmware
 etc/firmware/a300_pfp.fw
@@ -163,12 +163,12 @@ lib/libTimeService.so
 vendor/lib/libtime_genoff.so
 
 # Widevine
-lib/libdrmdecrypt.so
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/mediadrm/libwvdrmengine.so
+lib/libdrmdecrypt.so|00678a3048b9bbf3b341bc90d141656245983135
+vendor/lib/drm/libdrmwvmplugin.so|61129047f9bb5b0dc95534226b7039594cefac35
+vendor/lib/libwvdrm_L1.so|3eaf8ed1cb337608a1ccdb80d2c95804e7aea323
+vendor/lib/libwvm.so|ff1414b6001061cb737611a5fb2d23b22e7bb304
+vendor/lib/libWVStreamControlAPI_L1.so|6b28492ac55b9a3d86993343cf2c8b55240b3420
+vendor/lib/mediadrm/libwvdrmengine.so|e285482c7fd9421608c1d40cf37b5b7b283243e4
 
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
