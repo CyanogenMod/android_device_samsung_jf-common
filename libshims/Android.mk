@@ -21,7 +21,7 @@ LOCAL_SRC_FILES := \
 
 LOCAL_SHARED_LIBRARIES := libbinder
 
-LOCAL_MODULE := libsamsung_symbols
+LOCAL_MODULE := libshim_ril
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
