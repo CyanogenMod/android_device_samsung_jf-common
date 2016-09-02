@@ -35,7 +35,7 @@ on early-init
     mkdir /firmware-mdm 0771 system system
 
 on init
-    export LD_SHIM_LIBS /system/lib/libril.so|libsamsung_symbols.so
+    export LD_SHIM_LIBS /system/lib/libril.so|libshim_ril.so
 
     # Set permissions for efs partition
     mkdir /efs 0771 system radio
