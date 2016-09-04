@@ -66,8 +66,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
     protected boolean isGSM = false;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
-    private Message mPendingGetSimStatus;
-
     public jflteRIL(Context context, int networkModes, int cdmaSubscription) {
         this(context, networkModes, cdmaSubscription, null);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
@@ -587,30 +585,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
                 AsyncResult.forMessage(result, null, ex);
                 result.sendToTarget();
             }
-        }
-    }
-
-    // Hack for Lollipop
-    // The system now queries for SIM status before radio on, resulting
-    // in getting an APPSTATE_DETECTED state. The RIL does not send an
-    // RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED message after the SIM is
-    // initialized, so delay the message until the radio is on.
-    @Override
-    public void getIccCardStatus(Message result) {
-        if (mState != RadioState.RADIO_ON) {
-            mPendingGetSimStatus = result;
-        } else {
-            super.getIccCardStatus(result);
-        }
-    }
-
-    @Override
-    protected void switchToRadioState(RadioState newState) {
-        super.switchToRadioState(newState);
-
-        if (newState == RadioState.RADIO_ON && mPendingGetSimStatus != null) {
-            super.getIccCardStatus(mPendingGetSimStatus);
-            mPendingGetSimStatus = null;
         }
     }
 
