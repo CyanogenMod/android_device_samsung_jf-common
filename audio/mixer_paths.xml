@@ -16,9 +16,6 @@
     <ctl name="AUX_PCM_RX_Voice Mixer Voip" value="0" />
     <ctl name="COMP1 Switch" value="0" />
     <ctl name="DAC1 Switch" value="0" />
-    <ctl name="DAC3 MUX" value="ZERO" />
-    <ctl name="DAC3 MUX" value="ZERO" />
-    <ctl name="DAC4 MUX" value="ZERO" />
     <ctl name="DEC2 MUX" value="ZERO" />
     <ctl name="DEC3 MUX" value="ZERO" />
     <ctl name="DEC4 MUX" value="ZERO" />
@@ -32,7 +29,6 @@
     <ctl name="HDMI_RX Port Mixer SLIM_3_TX" value="0" />
     <ctl name="HDMI_RX_Voice Mixer Voice Stub" value="0" />
     <ctl name="HPHL DAC Switch" value="0" />
-    <ctl name="HPHR DAC Switch" value="0" />
     <ctl name="Internal Route Config" value="6" />
     <ctl name="Main Mic Delay" value="0" />
     <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
@@ -45,10 +41,8 @@
     <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="0" />
     <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
     <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="0" />
-    <ctl name="MultiMedia5 Mixer AUX_PCM_UL_TX" value="0" />
     <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="0" />
     <ctl name="PCM_RX_DL_HL Switch" value="0" />
-    <ctl name="PRI_RX Channels" value="One" />
     <ctl name="RX1 MIX1 INP1" value="ZERO" />
     <ctl name="RX1 MIX1 INP2" value="ZERO" />
     <ctl name="RX2 MIX1 INP1" value="ZERO" />
@@ -60,8 +54,6 @@
     <ctl name="RX5 MIX1 INP1" value="ZERO" />
     <ctl name="RX5 MIX1 INP2" value="ZERO" />
     <ctl name="RX6 DSM MUX" value="DSM_INV" />
-    <ctl name="SLIM RX1 MUX" value="ZERO" />
-    <ctl name="SLIM RX6 MUX" value="ZERO" />
     <ctl name="SLIM TX7 MUX" value="ZERO" />
     <ctl name="SLIM TX8 MUX" value="ZERO" />
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="0" />
@@ -198,11 +190,9 @@
     </path>
 
     <path name="low-latency-record bt-sco">
-        <ctl name="MultiMedia5 Mixer AUX_PCM_UL_TX" value="1" />
     </path>
 
     <path name="low-latency-record bt-sco-wb">
-        <ctl name="MultiMedia5 Mixer AUX_PCM_UL_TX" value="1" />
     </path>
 
     <path name="low-latency-record usb-headset-mic">
@@ -370,7 +360,6 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX1 MIX1 INP2" value="RX6" />
-        <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="DAC1 Switch" value="1" />
         <ctl name="RX1 Digital Volume" value="84" />
     </path>
@@ -404,7 +393,6 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="12" />
         <ctl name="HPHR Volume" value="12" />
         <ctl name="RX1 Digital Volume" value="80" />
@@ -488,7 +476,6 @@
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="RX2 MIX1 INP2" value="RX7" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="9" />
         <ctl name="HPHR Volume" value="9" />
         <ctl name="RX1 Digital Volume" value="84" />
@@ -521,7 +508,6 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="0" />
         <ctl name="HPHR Volume" value="0" />
         <ctl name="RX1 Digital Volume" value="70" />
@@ -550,7 +536,6 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="RX2 Digital Volume" value="84" />
         <ctl name="HPHL Volume" value="12" />
@@ -643,7 +628,6 @@
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="RX2 MIX1 INP2" value="RX7" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="12" />
         <ctl name="HPHR Volume" value="12" />
         <ctl name="RX1 Digital Volume" value="84" />
