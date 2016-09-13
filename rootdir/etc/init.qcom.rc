@@ -408,10 +408,13 @@ service mpdecision /system/bin/mpdecision --avg_comp
     disabled
 
 service kickstart /system/bin/qcks -i /firmware-mdm/image/
-    class core
     user root
     group radio cache inet misc audio sdcard_rw log system
     oneshot
+    disabled
+
+on property:ro.baseband=mdm
+    start kickstart
 
 service qseecomd /system/bin/qseecomd
     class late_start
@@ -424,10 +427,14 @@ service time_daemon /system/bin/time_daemon
     group root
 
 service insthk /system/bin/insthk
-    class core
+    class main
     user root
+    disabled
     oneshot
     seclabel u:r:insthk_exec:s0
+
+on property:sys.qseecomd.enable=true
+    start insthk
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
