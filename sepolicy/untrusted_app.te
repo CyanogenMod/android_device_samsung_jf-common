@@ -1,0 +1,5 @@
+allow untrusted_app efs_file:dir getattr;
+allow untrusted_app rootfs:dir { open read };
+allow untrusted_app rootfs:file getattr;
+allow untrusted_app sysfs:file { getattr open read };
+allow untrusted_app tombstone_data_file:dir getattr;
