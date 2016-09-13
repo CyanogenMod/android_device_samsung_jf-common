@@ -417,10 +417,14 @@ service time_daemon /system/bin/time_daemon
     group root
 
 service insthk /system/bin/insthk
-    class core
+    class main
     user root
+    disabled
     oneshot
     seclabel u:r:insthk_exec:s0
+
+on property:sys.qseecomd.enable=true
+    start insthk
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
