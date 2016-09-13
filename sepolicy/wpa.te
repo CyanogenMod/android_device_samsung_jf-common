@@ -1,3 +1,0 @@
-allow wpa efs_file:dir search;
-allow wpa wifi_data_file:file rw_file_perms;
-allow wpa wifi_efs_file:file r_file_perms;
