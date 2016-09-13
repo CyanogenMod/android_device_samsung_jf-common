@@ -1,0 +1,2 @@
+allow shell self:netlink_socket { bind create getattr read setopt write };
+allow shell su:process signal;

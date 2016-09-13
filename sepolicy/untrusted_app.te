@@ -1,0 +1,2 @@
+allow untrusted_app anr_data_file:file getattr;
+allow untrusted_app sysfs:file { getattr open read };
