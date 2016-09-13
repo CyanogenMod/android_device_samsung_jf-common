@@ -1,0 +1,7 @@
+allow sudaemon adbtcp_prop:file { getattr open };
+allow sudaemon coresight_prop:file open;
+allow sudaemon device_logging_prop:file open;
+allow sudaemon mmc_prop:file { getattr open };
+allow sudaemon recovery_prop:file { getattr open };
+allow sudaemon safemode_prop:file { getattr open };
+allow sudaemon userinit_prop:file { getattr open };
