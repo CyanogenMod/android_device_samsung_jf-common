@@ -1,0 +1,1 @@
+allow audioserver self:socket read;
