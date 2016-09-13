@@ -424,7 +424,7 @@ service insthk /system/bin/insthk
     user root
     disabled
     oneshot
-    seclabel u:r:insthk_exec:s0
+    seclabel u:r:insthk:s0
 
 on property:sys.qseecomd.enable=true
     start insthk
@@ -483,6 +483,7 @@ service loc_launcher /system/bin/loc_launcher
 service macloader /system/bin/macloader
     class main
     oneshot
+    seclabel u:r:macloader:s0
 
 on property:init.svc.macloader=stopped
     chown root system /data/.rev
