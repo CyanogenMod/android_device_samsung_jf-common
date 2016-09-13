@@ -153,19 +153,15 @@ on early-boot
     setprop qcom.audio.init complete
 
 on boot
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    # Configure bluetooth
+    chmod 0660 /proc/bluetooth/sleep/lpm
+    chmod 0660 /proc/bluetooth/sleep/btwrite
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
-    # Bluetooth LPM
+    chmod 0660 /dev/ttyHS0
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
-    chmod 0220 /proc/bluetooth/sleep/lpm
-    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /dev/ttyHS0
 
     # Create QMUX daemon socket area
     mkdir /dev/socket/qmux_audio 2770 media audio
@@ -400,7 +396,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 service mpdecision /system/bin/mpdecision --avg_comp
     class main
     user root
-    group system
+    group system readproc
     disabled
 
 service kickstart /system/bin/qcks -i /firmware-mdm/image/
@@ -481,6 +477,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -g@android:wpa_wlan0 \
 service macloader /system/bin/macloader
     class main
     oneshot
+    seclabel u:r:macloader_exec:s0
 
 on property:init.svc.macloader=stopped
     chown root system /data/.rev
