@@ -493,14 +493,6 @@ service thermal-engine /system/bin/thermal-engine
     user root
     group root
 
-service ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket sap_uim_socket1 stream 660 bluetooth bluetooth
-    socket rild-debug stream 660 radio system
-    user root
-    group radio cache inet misc audio log qcom_diag
-
 # Disable boot timeout for external modems
 on property:persist.sys.mdm.timeout_disable=1
     write /sys/module/mdm_common/parameters/disable_boot_timeout 1
