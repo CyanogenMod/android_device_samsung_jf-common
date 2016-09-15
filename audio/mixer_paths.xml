@@ -95,6 +95,11 @@
     <ctl name="Voice Stub Tx Mixer STUB_1_TX_HL" value="0" />
     <ctl name="Voip_Tx Mixer AUX_PCM_TX_Voip" value="0" />
     <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="0" />
+    <ctl name="Voip Dtx Mode" value="0" />
+    <ctl name="Voip Evrc Min Max Rate Config" id="0" value="1" />
+    <ctl name="Voip Evrc Min Max Rate Config" id="1" value="4" />
+    <ctl name="Voip Mode Config" value="12" />
+    <ctl name="Voip Rate Config" value="0" />
 
     <!-- echo reference -->
     <ctl name="EC_REF_RX" value="NONE" />
