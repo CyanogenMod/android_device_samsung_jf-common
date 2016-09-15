@@ -7,6 +7,7 @@ persist.audio.fluence.speaker=true
 persist.audio.fluence.voicecall=true
 ro.qc.sdk.audio.fluencetype=fluence
 use.dedicated.device.for.voip=true
+use.voice.path.for.pcm.voip=true
 
 # Bluetooth
 ro.bt.bdaddr_path=/efs/bluetooth/bt_addr
