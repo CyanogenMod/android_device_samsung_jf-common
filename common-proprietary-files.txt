@@ -85,7 +85,6 @@ lib/libdrmtime.so
 lib/libQSEEComAPI.so
 
 # GPS
-bin/loc_launcher
 lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_api_v02.so
