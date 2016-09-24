@@ -142,6 +142,11 @@ vendor/firmware/bcm2079xB4_pre_firmware.ncd
 bin/mpdecision
 vendor/lib/libqti-perfd-client.so
 
+# Post-processing
+bin/mm-pp-daemon
+lib/libmm-abl.so
+lib/libmm-abl-oem.so
+
 # Qualcomm framework
 bin/irsc_util
 etc/sec_config
