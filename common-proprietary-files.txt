@@ -128,6 +128,11 @@ lib/libhdcp2.so
 # Media
 lib/libI420colorconvert.so
 lib/libmm-color-convertor.so
+lib/libOmxAacDec.so
+lib/libOmxAmrwbplusDec.so
+lib/libOmxEvrcDec.so
+lib/libOmxQcelp13Dec.so
+lib/libOmxWmaDec.so
 
 # NFC firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
