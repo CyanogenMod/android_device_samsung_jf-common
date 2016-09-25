@@ -34,6 +34,8 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /firmware-mdm 0771 system system
 
+    mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
+
 on init
     export LD_SHIM_LIBS /system/lib/libril.so|libshim_ril.so
 
