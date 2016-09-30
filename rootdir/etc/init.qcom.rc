@@ -489,6 +489,7 @@ on property:init.svc.macloader=stopped
 
 service charger /sbin/healthd -c
     class charger
+    group system graphics
     seclabel u:r:healthd:s0
 
 service thermal-engine /system/bin/thermal-engine
