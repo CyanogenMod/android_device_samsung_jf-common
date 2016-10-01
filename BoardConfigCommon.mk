@@ -40,7 +40,6 @@ BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CONFIG := cyanogenmod_jf_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androidkernel-
 TARGET_KERNEL_SOURCE := kernel/samsung/jf
 
 # Audio
