@@ -39,6 +39,8 @@ write_headers "jactivelte jflteatt jfltespr jfltetmo jfltevzw jfltexx jfltecan j
 
 write_makefiles "$MY_DIR"/common-proprietary-files.txt
 
+printf '\n%s\n' "\$(call inherit-product, vendor/qcom/binaries/msm8960/graphics/graphics-vendor.mk)" >> "$PRODUCTMK"
+
 write_footers
 
 # Reinitialize the helper for device

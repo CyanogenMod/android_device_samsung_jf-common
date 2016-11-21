@@ -94,25 +94,6 @@ vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 
-# Graphics
-vendor/lib/egl/eglsubAndroid.so|7c61aa658248fd89e86c67bbb8b837b68eae9588
-vendor/lib/egl/libEGL_adreno.so|18d2a997d8355881e2d03b92d949487b1de1e424
-vendor/lib/egl/libGLESv1_CM_adreno.so|b5cb44d29a280ba77246a5e08d87bc8e3b7cfa3f
-vendor/lib/egl/libGLESv2_adreno.so|99ecbfd42293f8ff040c6477dbf4d81421e1d1af
-vendor/lib/egl/libq3dtools_adreno.so|ef35bcdb8754b4c5e88afb1386a55d193c074d63
-vendor/lib/libadreno_utils.so|63f1406713ac00f3a95d8c299705c4f4c6f4b2db
-vendor/lib/libbccQTI.so|f385f39ce001cbf9cdc897f9ff541ea362161b12
-vendor/lib/libC2D2.so|ffc822ea2a1c867934096b9d5d17482254e424e4
-vendor/lib/libc2d30-a3xx.so|c69ae6dde6ef1670b93f2ad501c2087d162cd0eb
-vendor/lib/libCB.so|1fff203eff9ed9c9d33d26a79ce2a4738364f45d
-vendor/lib/libgsl.so|4b8d8fb80b390b1570828f5d36d7ca83c08ebaa3
-vendor/lib/libllvm-qcom.so|ce908bafd697a26bffe58d6784446b7b796aae02
-vendor/lib/libRSDriver_adreno.so|280d6ef346561427f5cf022815e698645c45f520
-vendor/lib/librs_adreno.so|c06029be4f10843d599dd06d5915b09b7beecca7
-vendor/lib/librs_adreno_sha1.so|57378b4019cd1bfa4b574f6aa0b2d6edd3d3ef84
-vendor/lib/libsc-a3xx.so|572fb8a4439d956151cf7571f9ccdce33e811520
-vendor/lib/libuiblur.so|2dee48b106855d40b80062700421b5ec7853d178
-
 # Graphics firmware
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
