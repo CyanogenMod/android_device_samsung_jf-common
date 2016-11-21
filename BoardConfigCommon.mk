@@ -87,7 +87,8 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Lights
-TARGET_PROVIDES_LIBLIGHT := true
+TARGET_BUTTON_BRIGHTNESS_NODE := /sys/class/leds/button-backlight/brightness
+TARGET_PANEL_BRIGHTNESS_NODE := /sys/class/leds/lcd-backlight/brightness
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := msm8960
