@@ -69,3 +69,5 @@ setup_vendor "$BLOB_LOC" "$VENDOR" "$CM_ROOT"
 extract "$MY_DIR"/../$DEVICE/device-proprietary-files.txt "$SRC"
 
 "$MY_DIR"/setup-makefiles.sh
+
+"$CM_ROOT"/device/qcom/common/extractors/extract-files.sh "$SRC" msm8960 graphics
