@@ -270,8 +270,6 @@
         <item>evdo:4094,87380,1048576,4096,16384,262144</item>
         <item>ehrpd:4094,87380,1048576,4096,16384,262144</item>
     </string-array>
-    <!-- enable doze powersaving mode -->
-    <bool name="config_enableAutoPowerModes">true</bool>
 
     <!-- Ultrasound support for Mic/speaker path -->
     <!-- Whether the default microphone audio source supports near-ultrasound frequencies
